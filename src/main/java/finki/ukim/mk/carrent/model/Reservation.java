@@ -3,7 +3,6 @@ package finki.ukim.mk.carrent.model;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 
 @AllArgsConstructor

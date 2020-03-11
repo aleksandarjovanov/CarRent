@@ -28,16 +28,16 @@ public class InMemoryData {
     @PostConstruct
     public void init(){
 
-        Renter r1 = new Renter("2312995464019", "Robert Nikolson", 42, Sex.male);
-        Renter r2 = new Renter("2312995464020", "Johan Kolak", 52, Sex.male);
-        Renter r3 = new Renter("2312995464021", "Piter Gregor", 62, Sex.unoriented);
-        Renter r4 = new Renter("2312995464022", "Ellen Gobert", 32, Sex.female);
+        Renter r1 = new Renter("2312995464019", "Robert Nikolson", 42, Sex.male, new ArrayList<>());
+        Renter r2 = new Renter("2312995464020", "Johan Kolak", 52, Sex.male, new ArrayList<>());
+        Renter r3 = new Renter("2312995464021", "Piter Gregor", 62, Sex.unoriented, new ArrayList<>());
+        Renter r4 = new Renter("2312995464022", "Ellen Gobert", 32, Sex.female, new ArrayList<>());
 
-        Client c1 = new Client("1012995464019", "Roni Chank", 42, Sex.male, "A42X888", true);
-        Client c2 = new Client("1112995464019", "Kolana Wobert", 42, Sex.female, "B42X889", false);
-        Client c3 = new Client("1212995464019", "Maria Miriam", 42, Sex.female, "C42X887", false);
-        Client c4 = new Client("1312995464019", "Nikola Jokic", 42, Sex.male, "D42X886", false);
-        Client c5 = new Client("1412995464019", "Slavei Kojac", 42, Sex.unoriented, "E42X885", true);
+        Client c1 = new Client("1012995464019", "Roni Chank", 42, Sex.male, "A42X888", true, new ArrayList<>());
+        Client c2 = new Client("1112995464019", "Kolana Wobert", 42, Sex.female, "B42X889", false, new ArrayList<>());
+        Client c3 = new Client("1212995464019", "Maria Miriam", 42, Sex.female, "C42X887", false, new ArrayList<>());
+        Client c4 = new Client("1312995464019", "Nikola Jokic", 42, Sex.male, "D42X886", false, new ArrayList<>());
+        Client c5 = new Client("1412995464019", "Slavei Kojac", 42, Sex.unoriented, "E42X885", true, new ArrayList<>());
 
         Car car1 = new Car("NY-323-UU", "Ford", "Focus", "Red", 2005, 38, 3.0, 3, r1);
         Car car2 = new Car("NY-333-UU", "Ford", "Mondeo", "Blue", 2010, 50, 4.0, 4, r1);
@@ -54,6 +54,12 @@ public class InMemoryData {
         CarLog cl5 = new CarLog(4, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "good", "excellent", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car5);
         CarLog cl6 = new CarLog(5, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "middle", "poor", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car6);
         CarLog cl7 = new CarLog(6, (LocalDate.of(2019, Month.APRIL,4)), "excellent", "excellent", "excellent", "excellent", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car7);
+
+        c1.follow(r2);
+        c1.follow(r1);
+        c2.follow(r2);
+        c2.follow(r3);
+        c2.follow(r4);
 
         reservations.add(Reservation.createReservation(c1, r2, car4, "some comment", LocalDate.of(2020, Month.APRIL, 12), LocalDate.of(2020, Month.APRIL, 20)));
         reservations.add(Reservation.createReservation(c2, r4, car7, "some comment", LocalDate.of(2020, Month.APRIL, 12), LocalDate.of(2020, Month.APRIL, 20)));
