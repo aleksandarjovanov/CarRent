@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Renter {
 
-    private Long id;
+    private String embg;
     private String name;
     private int age;
     private Sex sex;

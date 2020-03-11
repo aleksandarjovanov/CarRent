@@ -8,5 +8,5 @@ import lombok.Getter;
 public enum Sex {
     male,
     female,
-    unknown;
+    unoriented;
 }

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 public class CarLog {
 
-    private Long id;
+    private int id;
     private LocalDate registrationDate;
     private String breaksStatus;
     private String frontGlassStatus;

@@ -11,9 +11,9 @@ public class Client {
 
     private String embg;
     private  String name;
-    private String driverLicenceNumber;
     private int age;
     private Sex sex;
+    private String driverLicenceNumber;
     private boolean crimeRecord;
 
 }

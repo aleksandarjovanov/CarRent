@@ -10,12 +10,11 @@ import lombok.NoArgsConstructor;
 public class Car {
 
     private String plate;
-    private String model;
     private String mark;
+    private String model;
     private String color;
     private int yearOfProduction;
     private int costPerDay;
-    private int costPerWeek;
     private double rating = 0;
     private int numberOfRatings = 0;
 
