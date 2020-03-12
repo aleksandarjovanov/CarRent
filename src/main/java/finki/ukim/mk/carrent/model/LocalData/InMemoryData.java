@@ -20,7 +20,7 @@ public class InMemoryData {
 
     public static final List<Client> clients = new ArrayList<>();
 
-    public static final List<CarLog> carlogs = new ArrayList<>();
+    public static final List<CarHistory> carHistories = new ArrayList<>();
 
     public static final List<Reservation> reservations = new ArrayList<>();
 
@@ -47,13 +47,40 @@ public class InMemoryData {
         Car car6 = new Car("KK-223-UU", "Kia", "Rio", "Red", 2015, 70, 4.0, 4, r3);
         Car car7 = new Car("ES-323-UU", "Audi", "Q5", "Yellow", 2016, 100, 3.0, 3, r4);
 
-        CarLog cl1 = new CarLog(0, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "good", "good", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car1);
-        CarLog cl2 = new CarLog(1, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "good", "good", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car2);
-        CarLog cl3 = new CarLog(2, (LocalDate.of(2019, Month.APRIL,4)), "excellent", "excellent", "good", "good", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car3);
-        CarLog cl4 = new CarLog(3, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "good", "good", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car4);
-        CarLog cl5 = new CarLog(4, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "good", "excellent", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car5);
-        CarLog cl6 = new CarLog(5, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "middle", "poor", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car6);
-        CarLog cl7 = new CarLog(6, (LocalDate.of(2019, Month.APRIL,4)), "excellent", "excellent", "excellent", "excellent", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car7);
+        CarHistory cl1 = new CarHistory(0, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "good", "good", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car1);
+        CarHistory cl2 = new CarHistory(1, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "good", "good", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car2);
+        CarHistory cl3 = new CarHistory(2, (LocalDate.of(2019, Month.APRIL,4)), "excellent", "excellent", "good", "good", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car3);
+        CarHistory cl4 = new CarHistory(3, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "good", "good", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car4);
+        CarHistory cl5 = new CarHistory(4, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "good", "excellent", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car5);
+        CarHistory cl6 = new CarHistory(5, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "middle", "poor", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car6);
+        CarHistory cl7 = new CarHistory(6, (LocalDate.of(2019, Month.APRIL,4)), "excellent", "excellent", "excellent", "excellent", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car7);
+
+        renters.add(r1);
+        renters.add(r2);
+        renters.add(r3);
+        renters.add(r4);
+
+        clients.add(c1);
+        clients.add(c2);
+        clients.add(c3);
+        clients.add(c4);
+        clients.add(c5);
+
+        cars.add(car1);
+        cars.add(car2);
+        cars.add(car3);
+        cars.add(car4);
+        cars.add(car5);
+        cars.add(car6);
+        cars.add(car7);
+
+        carHistories.add(cl1);
+        carHistories.add(cl2);
+        carHistories.add(cl3);
+        carHistories.add(cl4);
+        carHistories.add(cl5);
+        carHistories.add(cl6);
+        carHistories.add(cl7);
 
         c1.follow(r2);
         c1.follow(r1);

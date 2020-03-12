@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CarLog {
+public class CarHistory {
 
     private int id;
     private LocalDate registrationDate;
