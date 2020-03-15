@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -23,6 +24,8 @@ public class InMemoryData {
     public static final List<CarHistory> carHistories = new ArrayList<>();
 
     public static final List<Reservation> reservations = new ArrayList<>();
+
+    public static final List<Termin> termins = new ArrayList<>();
 
 
     @PostConstruct
@@ -54,6 +57,14 @@ public class InMemoryData {
         CarHistory cl5 = new CarHistory(4, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "good", "excellent", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car5);
         CarHistory cl6 = new CarHistory(5, (LocalDate.of(2019, Month.APRIL,4)), "good", "excellent", "middle", "poor", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car6);
         CarHistory cl7 = new CarHistory(6, (LocalDate.of(2019, Month.APRIL,4)), "excellent", "excellent", "excellent", "excellent", 240000, "It real sent your at. Amounted all shy set why followed declared. Repeated of endeavor mr position kindness offering ignorant so up. Simplicity are melancholy preference considered saw companions. Disposal on outweigh do speedily in on. Him ham although thoughts entirely drawings. Acceptance unreserved old admiration projection nay yet him. Lasted am so before on esteem vanity oh.", car7);
+
+        termins.add(new Termin(1, LocalDate.now(), LocalDate.of(2025, Month.APRIL, 1), car1));
+        termins.add(new Termin(2, LocalDate.now(), LocalDate.of(2025, Month.APRIL, 1), car2));
+        termins.add(new Termin(3, LocalDate.now(), LocalDate.of(2025, Month.APRIL, 1), car3));
+        termins.add(new Termin(4, LocalDate.now(), LocalDate.of(2025, Month.APRIL, 1), car4));
+        termins.add(new Termin(5, LocalDate.now(), LocalDate.of(2025, Month.APRIL, 1), car5));
+        termins.add(new Termin(6, LocalDate.now(), LocalDate.of(2025, Month.APRIL, 1), car6));
+        termins.add(new Termin(7, LocalDate.now(), LocalDate.of(2025, Month.APRIL, 1), car7));
 
         renters.add(r1);
         renters.add(r2);
@@ -88,8 +99,8 @@ public class InMemoryData {
         c2.follow(r3);
         c2.follow(r4);
 
-        reservations.add(Reservation.createReservation(c1, r2, car4, "some comment", LocalDate.of(2020, Month.APRIL, 12), LocalDate.of(2020, Month.APRIL, 20)));
-        reservations.add(Reservation.createReservation(c2, r4, car7, "some comment", LocalDate.of(2020, Month.APRIL, 12), LocalDate.of(2020, Month.APRIL, 20)));
+        reservations.add(Reservation.createReservation(c1, car4, "some comment", LocalDate.of(2020, Month.APRIL, 12), LocalDate.of(2020, Month.APRIL, 20)));
+        reservations.add(Reservation.createReservation(c2, car7, "some comment", LocalDate.of(2020, Month.APRIL, 12), LocalDate.of(2020, Month.APRIL, 20)));
 
 
     }

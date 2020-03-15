@@ -24,15 +24,13 @@ public class Reservation {
     private LocalDate to;
 
     private Client client;
-    private Renter renter;
     private Car car;
 
-    public static Reservation createReservation(Client client, Renter renter, Car car, String comment, LocalDate from, LocalDate to){
+    public static Reservation createReservation(Client client, Car car, String comment, LocalDate from, LocalDate to){
         Reservation reservation = new Reservation();
         reservation.reservationId = reservationCounter;
         reservationCounter++;
         reservation.client = client;
-        reservation.renter = renter;
         reservation.car = car;
         reservation.comment = comment;
         reservation.from = from;
