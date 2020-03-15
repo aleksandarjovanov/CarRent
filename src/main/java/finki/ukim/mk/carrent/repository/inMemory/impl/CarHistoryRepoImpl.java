@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Repository
 public class CarHistoryRepoImpl implements CarHistoryRepository {
     @Override
-    public Optional<CarHistory> findById(int carHistoryId) {
+    public Optional<CarHistory> findById(Long carHistoryId) {
         return InMemoryData.carHistories.stream().filter(carHistory -> carHistory.getId() == carHistoryId).findFirst();
     }
 
@@ -35,7 +35,7 @@ public class CarHistoryRepoImpl implements CarHistoryRepository {
     }
 
     @Override
-    public void deleteById(int carHistoryId) {
+    public void deleteById(Long carHistoryId) {
         this.findById(carHistoryId).ifPresent(carHistory -> InMemoryData.carHistories.remove(carHistory));
     }
 }

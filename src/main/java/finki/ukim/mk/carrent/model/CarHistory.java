@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 public class CarHistory {
 
-    private int id;
+    private Long id;
     private LocalDate registrationDate;
     private String breaksStatus;
     private String frontGlassStatus;

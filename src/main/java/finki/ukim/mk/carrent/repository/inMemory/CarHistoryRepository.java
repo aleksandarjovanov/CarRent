@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CarHistoryRepository {
-    Optional<CarHistory> findById(int carHistoryId);
+    Optional<CarHistory> findById(Long carHistoryId);
 
     CarHistory save(CarHistory history);
 
@@ -15,5 +15,5 @@ public interface CarHistoryRepository {
 
     List<CarHistory> searchByCarId(String carId);
 
-    void deleteById(int carHistoryId);
+    void deleteById(Long carHistoryId);
 }

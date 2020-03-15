@@ -7,11 +7,11 @@ import java.util.Optional;
 
 public interface TerminRepository {
 
-    Optional<Termin> findById(int terminId);
+    Optional<Termin> findById(Long terminId);
 
     Termin save(Termin termin);
 
-    void deleteById(int terminId);
+    void deleteById(Long terminId);
 
     List<Termin> getTerminesByCarId(String carId);
 

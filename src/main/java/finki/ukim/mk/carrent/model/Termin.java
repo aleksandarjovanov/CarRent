@@ -12,7 +12,7 @@ import java.time.Month;
 @Data
 public class Termin {
 
-    private int id;
+    private Long id;
 
     private LocalDate availableFrom;
     private LocalDate availableTo;

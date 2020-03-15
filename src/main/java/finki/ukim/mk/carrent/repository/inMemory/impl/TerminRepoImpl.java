@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Repository
 public class TerminRepoImpl implements TerminRepository {
     @Override
-    public Optional<Termin> findById(int terminId) {
+    public Optional<Termin> findById(Long terminId) {
         return InMemoryData.termins.stream().filter(termin -> termin.getId() == terminId).findFirst();
     }
 
@@ -24,7 +24,7 @@ public class TerminRepoImpl implements TerminRepository {
     }
 
     @Override
-    public void deleteById(int terminId) {
+    public void deleteById(Long terminId) {
         this.findById(terminId).ifPresent(termin -> InMemoryData.termins.remove(termin));
     }
 
