@@ -22,4 +22,15 @@ public class CarHistory {
     private String detailsDescription;
 
     private Car car;
+
+    public void createCarHistory(LocalDate registrationDate, String breaksStatus, String frontGlssStatus, String wheelStatus, String engineStatus, int kmPassed, String description, Car car){
+        this.registrationDate = registrationDate;
+        this.breaksStatus = breaksStatus;
+        this.frontGlassStatus = frontGlssStatus;
+        this.wheelsStatus = wheelStatus;
+        this.engineStatus = engineStatus;
+        this.kmDistancePassed = kmPassed;
+        this.detailsDescription = description;
+        this.car = car;
+    }
 }

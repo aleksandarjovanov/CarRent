@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TerminService {
-    Optional<Termin> findById(int terminId);
+    Optional<Termin> findById(Long terminId);
 
     Termin createTermin(LocalDate from, LocalDate to);
 
     void deleteById(Long terminId);
 
-    List<Termin> getTerminesByCarId(String carId);
+    List<Termin> getTerminesByCarId(Long carId);
 
-    void calculateNewTermines(String carId);
+    void calculateNewTermines(Long carId);
 }

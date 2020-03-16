@@ -9,11 +9,11 @@ import java.util.Optional;
 public interface CarHistoryService {
     Optional<CarHistory> findById(Long carHistoryId);
 
-    CarHistory createCarHistory(LocalDate registrationDate, String breaksStatus, String frontGlssStatus, String wheelStatus, String engineStatus, int kmPassed, String description, String carId);
+    CarHistory createCarHistory(LocalDate registrationDate, String breaksStatus, String frontGlssStatus, String wheelStatus, String engineStatus, int kmPassed, String description, Long carId);
 
     List<CarHistory> getAll();
 
-    List<CarHistory> searchByCarId(String carId);
+    List<CarHistory> searchByCarId(Long carId);
 
     void deleteById(Long carHistoryId);
 }

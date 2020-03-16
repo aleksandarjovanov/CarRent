@@ -9,16 +9,16 @@ import java.util.Optional;
 
 public interface RenterService {
 
-    List<Client> getFollowers(String renterId);
+    List<Client> getFollowers(Long renterId);
 
-    Optional<Renter> findById(String renterId);
+    Optional<Renter> findById(Long renterId);
 
-    Renter createRenter(String renterId, String name, int age, Sex sex);
+    Renter createRenter(Long renterId, String name, int age, Sex sex);
 
     List<Renter> getAllRenters();
 
     List<Renter> searchRenters(String name);
 
-    void deleteById(String renterId);
+    void deleteById(Long renterId);
 
 }

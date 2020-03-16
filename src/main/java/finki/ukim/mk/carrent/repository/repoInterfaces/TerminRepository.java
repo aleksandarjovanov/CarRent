@@ -1,4 +1,4 @@
-package finki.ukim.mk.carrent.repository.inMemory;
+package finki.ukim.mk.carrent.repository.repoInterfaces;
 
 import finki.ukim.mk.carrent.model.Termin;
 
@@ -13,7 +13,7 @@ public interface TerminRepository {
 
     void deleteById(Long terminId);
 
-    List<Termin> getTerminesByCarId(String carId);
+    List<Termin> getTerminesByCarId(Long carId);
 
     void saveAll(List<Termin> termins); // It will save a list of termines in Termin table DB, the whole logic of calculating new termines will be in Service layer!
 }

@@ -1,6 +1,5 @@
-package finki.ukim.mk.carrent.repository.inMemory;
+package finki.ukim.mk.carrent.repository.repoInterfaces;
 
-import finki.ukim.mk.carrent.model.Car;
 import finki.ukim.mk.carrent.model.Client;
 import finki.ukim.mk.carrent.model.Renter;
 
@@ -9,7 +8,7 @@ import java.util.Optional;
 
 public interface RenterRepository {
 
-    Optional<Renter> findById(String renterId);
+    Optional<Renter> findById(Long renterId);
 
     Renter save(Renter renter);
 
@@ -17,7 +16,6 @@ public interface RenterRepository {
 
     List<Renter> searchRenters(String name);
 
-    void deleteById(String renterId);
+    void deleteById(Long renterId);
 
-    List<Client> getAllFollowers(String renterId);
 }

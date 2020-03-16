@@ -1,20 +1,24 @@
 package finki.ukim.mk.carrent.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
-import java.time.Month;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Termin {
 
-    private Long id;
 
+    private Long id;
     private LocalDate availableFrom;
     private LocalDate availableTo;
     private Car car;
+
+    public void createTermin(LocalDate from, LocalDate to, Car car){
+        this.availableFrom = from;
+        this.availableTo = to;
+        this.car = car;
+    }
+
 }

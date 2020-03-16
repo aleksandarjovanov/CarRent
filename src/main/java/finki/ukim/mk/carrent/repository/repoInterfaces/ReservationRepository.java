@@ -1,17 +1,14 @@
-package finki.ukim.mk.carrent.service;
+package finki.ukim.mk.carrent.repository.repoInterfaces;
 
-import finki.ukim.mk.carrent.model.Car;
-import finki.ukim.mk.carrent.model.Client;
 import finki.ukim.mk.carrent.model.Reservation;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-public interface ReservationService {
+public interface ReservationRepository {
     Optional<Reservation> findById(Long reservationId);
 
-    Reservation createReservation(Long clientId, Long carId, String comment, LocalDate from, LocalDate to); // this method will call createReservation() in the model!
+    Reservation save(Reservation reservation);
 
     void deleteById(Long reservationId);
 
@@ -20,4 +17,5 @@ public interface ReservationService {
     List<Reservation> getReservationsByClientId(Long clientId);
 
     List<Reservation> getReservationsByRenterId(Long renterId);
+
 }

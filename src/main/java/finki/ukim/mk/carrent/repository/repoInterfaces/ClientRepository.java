@@ -1,4 +1,4 @@
-package finki.ukim.mk.carrent.repository.inMemory;
+package finki.ukim.mk.carrent.repository.repoInterfaces;
 
 import finki.ukim.mk.carrent.model.Client;
 
@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface ClientRepository {
 
-    Optional<Client> findById(String clientId);
+    Optional<Client> findById(Long clientId);
 
     Client save(Client client);
 
@@ -15,5 +15,5 @@ public interface ClientRepository {
 
     List<Client> searchClientsByName(String name);
 
-    void deleteById(String clientId);
+    void deleteById(Long clientId);
 }

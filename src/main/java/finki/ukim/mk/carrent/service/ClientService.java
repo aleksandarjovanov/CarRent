@@ -8,17 +8,17 @@ import java.util.Optional;
 
 public interface ClientService {
 
-    void follow(String clientId, String renterId);
+    void follow(Long clientId, Long renterId);
 
-    void unFollow(String clientId, String renterId);
+    void unFollow(Long clientId, Long renterId);
 
-    Optional<Client> findById(String clientId);
+    Optional<Client> findById(Long clientId);
 
-    Client createClient(String clientId, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord);
+    Client createClient(Long clientId, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord);
 
     List<Client> getAllClients();
 
     List<Client> searchClientsByName(String name);
 
-    void deleteById(String clientId);
+    void deleteById(Long clientId);
 }

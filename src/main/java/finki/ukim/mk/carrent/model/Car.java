@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Car {
 
+    private Long id;
     private String plate;
     private String mark;
     private String model;
@@ -23,5 +24,16 @@ public class Car {
     public void calculateRating(int rating){
         this.numberOfRatings++;
         this.rating = (this.rating + rating) / numberOfRatings;
+    }
+
+    public void createCar(String mark, String model, String color, int yearOfProduction, int cost, Renter renter){
+        this.mark = mark;
+        this.model = model;
+        this.color = color;
+        this.yearOfProduction = yearOfProduction;
+        this.costPerDay = cost;
+        this.rating = 0;
+        this.numberOfRatings = 0;
+        this.renter = renter;
     }
 }

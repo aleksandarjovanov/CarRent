@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -11,6 +12,7 @@ import java.util.List;
 @Data
 public class Client {
 
+    private Long id;
     private String embg;
     private  String name;
     private int age;
@@ -28,6 +30,16 @@ public class Client {
     public void unFollow(Renter renter) {
         this.following.remove(renter);
         renter.getFollowers().remove(this);
+    }
+
+    public void createClient(String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord){
+        this.embg = embg;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.driverLicenceNumber = driverLicenceNumber;
+        this.crimeRecord = crimeRecord;
+        this.following = new ArrayList<>();
     }
 
 }

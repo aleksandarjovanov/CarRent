@@ -1,6 +1,5 @@
-package finki.ukim.mk.carrent.repository.inMemory;
+package finki.ukim.mk.carrent.repository.repoInterfaces;
 
-import finki.ukim.mk.carrent.model.Car;
 import finki.ukim.mk.carrent.model.CarHistory;
 
 import java.util.List;
@@ -13,7 +12,7 @@ public interface CarHistoryRepository {
 
     List<CarHistory> getAll();
 
-    List<CarHistory> searchByCarId(String carId);
+    List<CarHistory> searchByCarId(Long carId);
 
     void deleteById(Long carHistoryId);
 }
