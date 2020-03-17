@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface CarHistoryService {
     CarHistory findById(Long carHistoryId);
 
-    CarHistory createCarHistory(LocalDate registrationDate, String breaksStatus, String frontGlssStatus, String wheelStatus, String engineStatus, int kmPassed, String description, Long carId);
+    CarHistory createCarHistory(LocalDate registrationDate, String breaksStatus, String frontGlassStatus, String wheelStatus, String engineStatus, int kmPassed, String description, Long carId);
 
     List<CarHistory> getAll();
 

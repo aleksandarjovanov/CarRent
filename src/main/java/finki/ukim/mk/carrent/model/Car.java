@@ -23,14 +23,14 @@ public class Car {
     private int numberOfRatings = 0;
 
     private Renter renter;
-    private List<Termin> terminList;
+    //private List<Termin> terminList;
 
     public void calculateRating(int rating){
         this.numberOfRatings++;
         this.rating = (this.rating + rating) / numberOfRatings;
     }
 
-    public void createCar(String mark, String model, String color, int yearOfProduction, int cost, Renter renter){
+    public void createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, Renter renter){
         this.mark = mark;
         this.model = model;
         this.color = color;
@@ -39,6 +39,6 @@ public class Car {
         this.rating = 0;
         this.numberOfRatings = 0;
         this.renter = renter;
-        this.terminList = new ArrayList<>();
+        //this.terminList = new ArrayList<>();
     }
 }

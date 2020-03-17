@@ -13,7 +13,7 @@ public interface RenterService {
 
     Renter findById(Long renterId);
 
-    Renter createRenter(Long renterId, String name, int age, Sex sex);
+    Renter createRenter(String embg, String name, int age, Sex sex);
 
     List<Renter> getAllRenters();
 
