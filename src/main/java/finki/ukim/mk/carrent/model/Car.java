@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -20,6 +23,7 @@ public class Car {
     private int numberOfRatings = 0;
 
     private Renter renter;
+    private List<Termin> terminList;
 
     public void calculateRating(int rating){
         this.numberOfRatings++;
@@ -35,5 +39,6 @@ public class Car {
         this.rating = 0;
         this.numberOfRatings = 0;
         this.renter = renter;
+        this.terminList = new ArrayList<>();
     }
 }

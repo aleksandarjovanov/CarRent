@@ -11,7 +11,7 @@ public interface RenterService {
 
     List<Client> getFollowers(Long renterId);
 
-    Optional<Renter> findById(Long renterId);
+    Renter findById(Long renterId);
 
     Renter createRenter(Long renterId, String name, int age, Sex sex);
 

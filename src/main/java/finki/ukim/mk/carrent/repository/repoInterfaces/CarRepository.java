@@ -13,10 +13,10 @@ public interface CarRepository {
 
     List<Car> getAllCars();
 
-    List<Car> searchCarsByName(String name);
+    List<Car> searchCarsByMark(String mark);
 
     void deleteById(Long carId);
 
-    List<Car> getAllOwnedCarsById(Long renterId);  // This should be here, not in RenterRepo!?
+    List<Car> getAllOwnedCarsByRenterId(Long renterId);  // This should be here, not in RenterRepo!?
 
 }

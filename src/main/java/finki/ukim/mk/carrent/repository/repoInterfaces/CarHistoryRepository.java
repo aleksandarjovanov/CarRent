@@ -12,7 +12,7 @@ public interface CarHistoryRepository {
 
     List<CarHistory> getAll();
 
-    List<CarHistory> searchByCarId(Long carId);
+    List<CarHistory> getAllHistoriesByCarId(Long carId);
 
     void deleteById(Long carHistoryId);
 }

@@ -13,7 +13,7 @@ public interface TerminRepository {
 
     void deleteById(Long terminId);
 
-    List<Termin> getTerminesByCarId(Long carId);
+    List<Termin> getAllTerminesByCarId(Long carId);
 
     void saveAll(List<Termin> termins); // It will save a list of termines in Termin table DB, the whole logic of calculating new termines will be in Service layer!
 }

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ReservationService {
-    Optional<Reservation> findById(Long reservationId);
+    Reservation findById(Long reservationId);
 
     Reservation createReservation(Long clientId, Long carId, String comment, LocalDate from, LocalDate to); // this method will call createReservation() in the model!
 

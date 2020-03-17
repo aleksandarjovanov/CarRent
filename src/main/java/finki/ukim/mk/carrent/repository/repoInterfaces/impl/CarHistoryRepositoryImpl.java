@@ -33,8 +33,8 @@ public class CarHistoryRepositoryImpl implements CarHistoryRepository {
     }
 
     @Override
-    public List<CarHistory> searchByCarId(Long carId) {
-        return null;  // TUKA ZASTANAH SINOKE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public List<CarHistory> getAllHistoriesByCarId(Long carId) {
+        return jpaCarHistoryRepository.findByCar_Id(carId);
     }
 
     @Override

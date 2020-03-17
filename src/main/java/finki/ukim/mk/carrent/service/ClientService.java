@@ -12,9 +12,9 @@ public interface ClientService {
 
     void unFollow(Long clientId, Long renterId);
 
-    Optional<Client> findById(Long clientId);
+    Client findById(Long clientId);
 
-    Client createClient(Long clientId, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord);
+    Client createClient(String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord);
 
     List<Client> getAllClients();
 

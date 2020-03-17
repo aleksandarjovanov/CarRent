@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CarHistoryService {
-    Optional<CarHistory> findById(Long carHistoryId);
+    CarHistory findById(Long carHistoryId);
 
     CarHistory createCarHistory(LocalDate registrationDate, String breaksStatus, String frontGlssStatus, String wheelStatus, String engineStatus, int kmPassed, String description, Long carId);
 

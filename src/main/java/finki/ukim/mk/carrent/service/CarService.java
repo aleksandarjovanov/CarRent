@@ -7,13 +7,13 @@ import java.util.Optional;
 
 public interface CarService {
 
-    Optional<Car> findById(Long carId);
+    Car findById(Long carId);
 
-    Car createCar(Long carId, String mark, String model, String color, int yearOfProduction, int cost, Long renterId);
+    Car createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, Long renterId);
 
     List<Car> getAllCars();
 
-    List<Car> searchCarsByName(String name);
+    List<Car> searchCarsByMark(String mark);
 
     void deleteById(Long carId);
 

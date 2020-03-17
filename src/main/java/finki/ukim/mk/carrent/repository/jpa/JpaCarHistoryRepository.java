@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface JpaCarHistoryRepository extends JpaRepository<CarHistory, Long> {
-    @Query("select c from Client c " +
-            "WHERE c.name like :term")
-    List<Client> searchClients(@Param("term") String term);
+
+    List<CarHistory> findByCar_Id(Long car_Id);
 }
