@@ -29,9 +29,9 @@ public class TerminServiceImpl implements TerminService {
     }
 
     @Override
-    public Termin createTermin(LocalDate from, LocalDate to, Car car) {
+    public Termin createTermin(LocalDate from, LocalDate to, Long carId) {
         Termin termin = new Termin();
-        termin.createTermin(from, to, car);
+        termin.createTermin(from, to, this.carRepository.findById(carId).orElseThrow(InvalidCarException::new));
         return this.terminRepository.save(termin);
     }
 
@@ -62,4 +62,24 @@ public class TerminServiceImpl implements TerminService {
         }
     }
 
+    @Override
+    public void calculateNewTermines(Long carId, LocalDate from, LocalDate to) {                  // This will be called from ReservationServiceImpl.createReservation()
+        List<Termin> terminList = getTerminesByCarId(carId);
+        for(Termin t : terminList){
+            if((from.compareTo(t.getAvailableFrom()) >= 0) && (to.compareTo(t.getAvailableTo()) <= 0)){
+                this.terminRepository.deleteById(t.getId());
+                if((from.compareTo(t.getAvailableFrom()) == 0) && (to.compareTo(t.getAvailableTo()) < 0)){
+                    createTermin(to, t.getAvailableTo(), carId);
+                }
+                else if((from.compareTo(t.getAvailableFrom()) > 0) && (to.compareTo(t.getAvailableTo()) == 0)){
+                    createTermin(t.getAvailableFrom(), from, carId);
+                }
+                else {
+                    createTermin(t.getAvailableFrom(), from, carId);
+                    createTermin(to, t.getAvailableTo(), carId);
+                }
+            }
+            break;
+        }
+    }
 }
