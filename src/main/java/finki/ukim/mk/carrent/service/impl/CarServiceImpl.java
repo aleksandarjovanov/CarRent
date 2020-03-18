@@ -32,7 +32,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Car findById(Long carId) {
-        this.terminService.calculateNewTermines(carId);
+        this.terminService.checkTerminChanges(carId);
         return this.carRepository.findById(carId).orElseThrow(InvalidCarException::new);
     }
 

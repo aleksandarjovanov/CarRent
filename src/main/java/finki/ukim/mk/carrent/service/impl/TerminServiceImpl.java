@@ -46,15 +46,20 @@ public class TerminServiceImpl implements TerminService {
     }
 
     @Override
-    public void calculateNewTermines(Long carId) {
-        // This will be called from CarServiceImpl.findById()
+    public void checkTerminChanges(Long carId) {                          // This will be called from CarServiceImpl.findById()
         List<Termin> terminList = getTerminesByCarId(carId);
 
-        Termin tempTermin = terminList.get(0);
-        tempTermin.setAvailableFrom(LocalDate.now());
-        this.terminRepository.save(tempTermin);
-
-        // TUKA SUM ZASTANAT !!!!
-
+        for(Termin t : terminList){
+            if(t.getAvailableFrom().compareTo(LocalDate.now()) < 0){       // The Termin have new time AvailableFrom ? If yes then make changes to db!
+                t.setAvailableFrom(LocalDate.now());
+                if(t.getAvailableTo().compareTo(t.getAvailableFrom()) <= 0){    // The time for the Termin passed ? If yes delete it!
+                    this.terminRepository.deleteById(t.getId());
+                }
+                else{
+                    this.terminRepository.save(t);                              // If not save the termin with his new AvailableFrom !
+                }
+            }
+        }
     }
+
 }

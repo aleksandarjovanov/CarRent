@@ -16,5 +16,5 @@ public interface TerminService {
 
     List<Termin> getTerminesByCarId(Long carId);
 
-    void calculateNewTermines(Long carId);
+    void checkTerminChanges(Long carId);
 }
