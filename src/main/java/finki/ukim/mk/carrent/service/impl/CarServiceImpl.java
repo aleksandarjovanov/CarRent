@@ -41,10 +41,9 @@ public class CarServiceImpl implements CarService {
         Renter renter = this.renterRepository.findById(renterId).orElseThrow(InvalidRenterException::new);
         Car car = new Car();
         car.createCar(plate, mark, model, color, yearOfProduction, cost, renter);
-
-        this.terminService.createTermin(LocalDate.now(), LocalDate.of(2022, Month.APRIL, 1), car);
-
-        return this.carRepository.save(car);
+        this.carRepository.save(car);
+        this.terminService.createTermin(LocalDate.now(), LocalDate.of(2022, Month.APRIL, 1), car.getId());
+        return car;
     }
 
     @Override

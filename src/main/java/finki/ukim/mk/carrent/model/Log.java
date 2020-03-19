@@ -4,17 +4,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Log {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String sessionId;
+
+    @Column(name = "user_roll")
     private String roll;
     private String userName;
     private LocalTime fromTime;

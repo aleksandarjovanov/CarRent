@@ -4,26 +4,38 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
 
+
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Car {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "car_plate")
     private String plate;
+
+    @Column(name = "car_mark")
     private String mark;
+
+    @Column(name = "car_model")
     private String model;
+
+    @Column(name = "car_color")
     private String color;
+
     private int yearOfProduction;
     private int costPerDay;
     private double rating = 0;
     private int numberOfRatings = 0;
 
+    @ManyToOne
     private Renter renter;
-    //private List<Termin> terminList;
 
     public void calculateRating(int rating){
         this.numberOfRatings++;
@@ -31,6 +43,7 @@ public class Car {
     }
 
     public void createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, Renter renter){
+        this.plate = plate;
         this.mark = mark;
         this.model = model;
         this.color = color;
@@ -39,6 +52,5 @@ public class Car {
         this.rating = 0;
         this.numberOfRatings = 0;
         this.renter = renter;
-        //this.terminList = new ArrayList<>();
     }
 }
