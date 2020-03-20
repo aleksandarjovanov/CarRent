@@ -34,7 +34,7 @@ public class ClientRepositoryImpl implements ClientRepository {
 
     @Override
     public List<Client> searchClientsByName(String name) {
-        return jpaClientRepository.searchClients(name);
+        return jpaClientRepository.findByNameContaining(name);
     }
 
     @Override

@@ -21,4 +21,6 @@ public interface ClientService {
     List<Client> searchClientsByName(String name);
 
     void deleteById(Long clientId);
+
+    Client editClient(Long clientId, String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord);
 }

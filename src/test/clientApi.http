@@ -1,0 +1,84 @@
+POST http://localhost:8080/clients
+Content-Type: application/x-www-form-urlencoded
+
+embg=2512997164229&name=Simeon&age=31&sex=unoriented&driverLicenceNumber=Aa323OS&crimeRecord=false
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
+
+
+###
+GET http://localhost:8080/clients/1
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+###
+GET http://localhost:8080/clients
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+###
+DELETE http://localhost:8080/clients/2
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+###
+GET http://localhost:8080/clients?name=o
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+###
+GET http://localhost:8080/clients/follow
+clientId: 4
+renterId: 5
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+###
+GET http://localhost:8080/clients/unFollow
+clientId: 4
+renterId: 1
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+###
+PATCH http://localhost:8080/clients/1
+Content-Type: application/x-www-form-urlencoded
+
+embg=2222222222222&name=Ace&age=22&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 201");
+  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
+});
+%}
+
+###

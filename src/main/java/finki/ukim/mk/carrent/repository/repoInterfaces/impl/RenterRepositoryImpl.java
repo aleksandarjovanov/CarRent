@@ -35,7 +35,7 @@ public class RenterRepositoryImpl implements RenterRepository {
 
     @Override
     public List<Renter> searchRenters(String name) {
-        return jpaRenterRepository.searchRenters(name);
+        return jpaRenterRepository.findByNameContaining(name);
     }
 
     @Override

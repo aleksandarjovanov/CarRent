@@ -29,11 +29,11 @@ public class Renter {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Client> followers;
 
-    public void createRenter(String embg, String name, int age, Sex sex){
+    public void createRenter(String embg, String name, int age, Sex sex, List<Client> followersList){
         this.embg = embg;
         this.name = name;
         this.age = age;
         this.sex = sex;
-        this.followers = new ArrayList<>();
+        this.followers = followersList;
     }
 }

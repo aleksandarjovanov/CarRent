@@ -9,7 +9,7 @@ public interface CarService {
 
     Car findById(Long carId);
 
-    Car createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, Long renterId);
+    Car createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, String imgLink, Long renterId);
 
     List<Car> getAllCars();
 

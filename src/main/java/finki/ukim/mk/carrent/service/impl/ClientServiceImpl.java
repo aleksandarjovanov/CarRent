@@ -68,4 +68,11 @@ public class ClientServiceImpl implements ClientService {
     public void deleteById(Long clientId) {
         this.clientRepository.deleteById(clientId);
     }
+
+    @Override
+    public Client editClient(Long clientId, String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord) {
+        Client client = findById(clientId);
+        client.createClient(embg,name,age,sex,driverLicenceNumber,crimeRecord);
+        return this.clientRepository.save(client);
+    }
 }

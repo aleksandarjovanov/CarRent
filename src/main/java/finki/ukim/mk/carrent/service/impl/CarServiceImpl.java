@@ -37,10 +37,10 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, Long renterId) {
+    public Car createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, String imgLink, Long renterId) {
         Renter renter = this.renterRepository.findById(renterId).orElseThrow(InvalidRenterException::new);
         Car car = new Car();
-        car.createCar(plate, mark, model, color, yearOfProduction, cost, renter);
+        car.createCar(plate, mark, model, color, yearOfProduction, cost, imgLink, renter);
         this.carRepository.save(car);
         this.terminService.createTermin(LocalDate.now(), LocalDate.of(2022, Month.APRIL, 1), car.getId());
         return car;

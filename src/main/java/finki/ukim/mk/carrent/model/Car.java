@@ -29,6 +29,8 @@ public class Car {
     @Column(name = "car_color")
     private String color;
 
+    private String imgLink;
+
     private int yearOfProduction;
     private int costPerDay;
     private double rating = 0;
@@ -42,7 +44,7 @@ public class Car {
         this.rating = (this.rating + rating) / numberOfRatings;
     }
 
-    public void createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, Renter renter){
+    public void createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, String imgLink, Renter renter){
         this.plate = plate;
         this.mark = mark;
         this.model = model;
@@ -51,6 +53,7 @@ public class Car {
         this.costPerDay = cost;
         this.rating = 0;
         this.numberOfRatings = 0;
+        this.imgLink = imgLink;
         this.renter = renter;
     }
 }
