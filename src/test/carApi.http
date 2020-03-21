@@ -1,7 +1,8 @@
-POST http://localhost:8080/renters
+POST http://localhost:8080/cars
 Content-Type: application/x-www-form-urlencoded
+renterId: 2
 
-embg=2522197424029&name=Orce&age=31&sex=male
+plate=AA122&mark=Kia&model=Sportage&color=red&yearOfProduction=2017&cost=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
 
 > {%
 client.test("Request executed successfully", function() {
@@ -11,7 +12,7 @@ client.test("Request executed successfully", function() {
 
 
 ###
-GET http://localhost:8080/renters/2
+GET http://localhost:8080/clients/1
 
 > {%
 client.test("Request executed successfully", function() {
@@ -20,7 +21,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/renters
+GET http://localhost:8080/clients
 
 > {%
 client.test("Request executed successfully", function() {
@@ -29,7 +30,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-DELETE http://localhost:8080/renters/1
+DELETE http://localhost:8080/clients/2
 
 > {%
 client.test("Request executed successfully", function() {
@@ -38,7 +39,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/renters?name=El
+GET http://localhost:8080/clients?name=o
 
 > {%
 client.test("Request executed successfully", function() {
@@ -47,7 +48,9 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/renters/followers/1
+GET http://localhost:8080/clients/follow
+clientId: 4
+renterId: 5
 
 > {%
 client.test("Request executed successfully", function() {
@@ -56,10 +59,21 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-PATCH http://localhost:8080/renters/5
+GET http://localhost:8080/clients/unFollow
+clientId: 4
+renterId: 1
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+###
+PATCH http://localhost:8080/clients/1
 Content-Type: application/x-www-form-urlencoded
 
-embg=2222222222222&name=JJ&age=22&sex=male
+embg=2222222222222&name=Ace&age=22&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
 
 > {%
 client.test("Request executed successfully", function() {

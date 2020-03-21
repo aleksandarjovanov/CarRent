@@ -3,6 +3,8 @@ package finki.ukim.mk.carrent.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class Renter {
     private Sex sex;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Client> followers;
 
     public void createRenter(String embg, String name, int age, Sex sex, List<Client> followersList){

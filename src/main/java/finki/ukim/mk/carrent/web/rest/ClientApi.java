@@ -49,14 +49,14 @@ public class ClientApi {
         return this.clientService.searchClientsByName(name);
     }
 
-    @GetMapping("/follow")
+    @PostMapping("/follow")
     public void follow(@RequestHeader(value = "clientId", required = true) Long clientId,
                        @RequestHeader(value = "renterId", required = true) Long renterId
                        ){
         this.clientService.follow(clientId, renterId);
     }
 
-    @GetMapping("/unFollow")
+    @PostMapping("/unFollow")
     public void unFollow(@RequestHeader(value = "clientId", required = true) Long clientId,
                          @RequestHeader(value = "renterId", required = true) Long renterId
                          ){

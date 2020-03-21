@@ -3,6 +3,8 @@ package finki.ukim.mk.carrent.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -37,6 +39,7 @@ public class Car {
     private int numberOfRatings = 0;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Renter renter;
 
     public void calculateRating(int rating){
@@ -44,15 +47,15 @@ public class Car {
         this.rating = (this.rating + rating) / numberOfRatings;
     }
 
-    public void createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, String imgLink, Renter renter){
+    public void createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, String imgLink, double rating, int numberOfRatings, Renter renter){
         this.plate = plate;
         this.mark = mark;
         this.model = model;
         this.color = color;
         this.yearOfProduction = yearOfProduction;
         this.costPerDay = cost;
-        this.rating = 0;
-        this.numberOfRatings = 0;
+        this.rating = rating;
+        this.numberOfRatings = numberOfRatings;
         this.imgLink = imgLink;
         this.renter = renter;
     }

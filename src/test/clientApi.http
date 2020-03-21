@@ -29,7 +29,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-DELETE http://localhost:8080/clients/2
+DELETE http://localhost:8080/clients/1
 
 > {%
 client.test("Request executed successfully", function() {
@@ -47,9 +47,9 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients/follow
-clientId: 4
-renterId: 5
+POST http://localhost:8080/clients/follow
+clientId: 2
+renterId: 2
 
 > {%
 client.test("Request executed successfully", function() {
@@ -58,7 +58,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients/unFollow
+POST http://localhost:8080/clients/unFollow
 clientId: 4
 renterId: 1
 

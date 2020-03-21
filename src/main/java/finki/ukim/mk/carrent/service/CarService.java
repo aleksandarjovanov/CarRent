@@ -20,4 +20,6 @@ public interface CarService {
     void setRating(Long carId, int rating);
 
     List<Car> getAllOwnedCarsById(Long renterId);
+
+    Car editCar(Long carId, String plate, String mark, String model, String color, int yearOfProduction, int cost, String imgLink, Long renterId);
 }

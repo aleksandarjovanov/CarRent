@@ -53,7 +53,7 @@ public class TerminServiceImpl implements TerminService {
             if(t.getAvailableFrom().compareTo(LocalDate.now()) < 0){       // The Termin have new time AvailableFrom ? If yes then make changes to db!
                 t.setAvailableFrom(LocalDate.now());
                 if(t.getAvailableTo().compareTo(t.getAvailableFrom()) <= 0){    // The time for the Termin passed ? If yes delete it!
-                    this.terminRepository.deleteById(t.getId());
+                    deleteById(t.getId());
                 }
                 else{
                     this.terminRepository.save(t);                              // If not save the termin with his new AvailableFrom !
@@ -67,7 +67,7 @@ public class TerminServiceImpl implements TerminService {
         List<Termin> terminList = getTerminesByCarId(carId);
         for(Termin t : terminList){
             if((from.compareTo(t.getAvailableFrom()) >= 0) && (to.compareTo(t.getAvailableTo()) <= 0)){
-                this.terminRepository.deleteById(t.getId());
+                deleteById(t.getId());
                 if((from.compareTo(t.getAvailableFrom()) == 0) && (to.compareTo(t.getAvailableTo()) < 0)){
                     createTermin(to, t.getAvailableTo(), carId);
                 }
