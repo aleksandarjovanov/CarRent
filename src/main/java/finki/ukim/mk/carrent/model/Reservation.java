@@ -1,6 +1,8 @@
 package finki.ukim.mk.carrent.model;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,8 +25,11 @@ public class Reservation {
     private LocalDate to;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private Client client;
+
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private Car car;
 
     public void createReservation(Client client, Car car, String comment, LocalDate from, LocalDate to){
@@ -33,5 +38,15 @@ public class Reservation {
         this.comment = comment;
         this.from = from;
         this.to = to;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", comment='" + comment + '\'' +
+                ", from=" + from +
+                ", to=" + to +
+                '}';
     }
 }

@@ -59,4 +59,20 @@ public class Car {
         this.imgLink = imgLink;
         this.renter = renter;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", plate='" + plate + '\'' +
+                ", mark='" + mark + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", imgLink='" + imgLink + '\'' +
+                ", yearOfProduction=" + yearOfProduction +
+                ", costPerDay=" + costPerDay +
+                ", rating=" + rating +
+                ", numberOfRatings=" + numberOfRatings +
+                '}';
+    }
 }

@@ -29,4 +29,12 @@ public class Termin {
         this.car = car;
     }
 
+    @Override
+    public String toString() {
+        return "Termin{" +
+                "id=" + id +
+                ", availableFrom=" + availableFrom +
+                ", availableTo=" + availableTo +
+                '}';
+    }
 }

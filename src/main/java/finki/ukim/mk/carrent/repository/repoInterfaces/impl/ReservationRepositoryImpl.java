@@ -5,6 +5,7 @@ import finki.ukim.mk.carrent.repository.jpa.JpaReservationRepository;
 import finki.ukim.mk.carrent.repository.repoInterfaces.ReservationRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,4 +47,15 @@ public class ReservationRepositoryImpl implements ReservationRepository {
     public List<Reservation> getReservationsByRenterId(Long renterId) {
         return jpaReservationRepository.findByRenter_Id(renterId);
     }
+
+    @Override
+    public List<Reservation> getReservationsByClientName(String name) {
+        return this.jpaReservationRepository.findByClientName(name);
+    }
+
+    @Override
+    public List<Reservation> getActiveReservations(LocalDate now) {
+        return this.jpaReservationRepository.findReservationsByToIsLessThan(now);
+    }
+
 }

@@ -66,6 +66,8 @@ public class TerminServiceImpl implements TerminService {
     public void calculateNewTermines(Long carId, LocalDate from, LocalDate to) {                  // This will be called from ReservationServiceImpl.createReservation()
         List<Termin> terminList = getTerminesByCarId(carId);
         for(Termin t : terminList){
+            System.out.println(t.toString());
+            System.out.println("asdasdasd");
             if((from.compareTo(t.getAvailableFrom()) >= 0) && (to.compareTo(t.getAvailableTo()) <= 0)){
                 deleteById(t.getId());
                 if((from.compareTo(t.getAvailableFrom()) == 0) && (to.compareTo(t.getAvailableTo()) < 0)){

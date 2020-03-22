@@ -20,4 +20,8 @@ public interface ReservationService {
     List<Reservation> getReservationsByClientId(Long clientId);
 
     List<Reservation> getReservationsByRenterId(Long renterId);
+
+    List<Reservation> getReservationsByClientName(String name);
+
+    List<Reservation> getActiveReservations(LocalDate now);
 }

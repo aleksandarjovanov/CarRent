@@ -69,4 +69,15 @@ public class ReservationServiceImpl implements ReservationService {
     public List<Reservation> getReservationsByRenterId(Long renterId) {
         return this.reservationRepository.getReservationsByRenterId(renterId);
     }
+
+    @Override
+    public List<Reservation> getReservationsByClientName(String name) {
+        return this.reservationRepository.getReservationsByClientName(name);
+    }
+
+    @Override
+    public List<Reservation> getActiveReservations(LocalDate now) {
+        return this.reservationRepository.getActiveReservations(now);
+    }
+
 }
