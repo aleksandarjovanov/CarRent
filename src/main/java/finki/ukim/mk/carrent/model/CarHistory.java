@@ -4,6 +4,8 @@ package finki.ukim.mk.carrent.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -26,6 +28,7 @@ public class CarHistory {
     private String detailsDescription;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Car car;
 
     public void createCarHistory(LocalDate registrationDate, String breaksStatus, String frontGlssStatus, String wheelStatus, String engineStatus, int kmPassed, String description, Car car){

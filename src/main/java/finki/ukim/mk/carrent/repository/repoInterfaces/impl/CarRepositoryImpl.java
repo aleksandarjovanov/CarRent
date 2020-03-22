@@ -34,7 +34,7 @@ public class CarRepositoryImpl implements CarRepository {
 
     @Override
     public List<Car> searchCarsByMark(String mark) {
-        return jpaCarRepository.searchCars(mark);
+        return jpaCarRepository.findByMarkContaining(mark);
     }
 
     @Override

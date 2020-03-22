@@ -1,7 +1,7 @@
 POST http://localhost:8080/renters
 Content-Type: application/x-www-form-urlencoded
 
-embg=2522197424029&name=Orce&age=31&sex=male
+embg=2522197424029&name=Tadej&age=31&sex=male
 
 > {%
 client.test("Request executed successfully", function() {
@@ -29,7 +29,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-DELETE http://localhost:8080/renters/1
+DELETE http://localhost:8080/renters/2
 
 > {%
 client.test("Request executed successfully", function() {
@@ -38,7 +38,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/renters?name=El
+GET http://localhost:8080/renters?name=T
 
 > {%
 client.test("Request executed successfully", function() {

@@ -16,4 +16,6 @@ public interface CarHistoryService {
     List<CarHistory> searchByCarId(Long carId);
 
     void deleteById(Long carHistoryId);
+
+    CarHistory editHistory(Long historyId, Long carId, LocalDate registrationDate, String breaksStatus, String frontGlassStatus, String wheelStatus, String engineStatus, int kmPassed, String description);
 }

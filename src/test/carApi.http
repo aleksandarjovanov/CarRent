@@ -1,8 +1,8 @@
 POST http://localhost:8080/cars
 Content-Type: application/x-www-form-urlencoded
-renterId: 2
+renterId: 1
 
-plate=AA122&mark=Kia&model=Sportage&color=red&yearOfProduction=2017&cost=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
+plate=AA112&mark=Ford&model=Focuse&color=blue&yearOfProduction=2017&cost=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
 
 > {%
 client.test("Request executed successfully", function() {
@@ -12,7 +12,7 @@ client.test("Request executed successfully", function() {
 
 
 ###
-GET http://localhost:8080/clients/1
+GET http://localhost:8080/cars/1
 
 > {%
 client.test("Request executed successfully", function() {
@@ -21,7 +21,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients
+GET http://localhost:8080/cars
 
 > {%
 client.test("Request executed successfully", function() {
@@ -30,7 +30,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-DELETE http://localhost:8080/clients/2
+DELETE http://localhost:8080/cars/2
 
 > {%
 client.test("Request executed successfully", function() {
@@ -39,7 +39,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients?name=o
+GET http://localhost:8080/cars?mark=F
 
 > {%
 client.test("Request executed successfully", function() {
@@ -48,9 +48,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients/follow
-clientId: 4
-renterId: 5
+GET http://localhost:8080/cars/2/termines
 
 > {%
 client.test("Request executed successfully", function() {
@@ -59,21 +57,21 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients/unFollow
-clientId: 4
+GET http://localhost:8080/cars/renter/1
+
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+###
+PATCH http://localhost:8080/cars/2
+Content-Type: application/x-www-form-urlencoded
 renterId: 1
 
-> {%
-client.test("Request executed successfully", function() {
-  client.assert(response.status === 400, "Response status is not 400");
-});
-%}
-
-###
-PATCH http://localhost:8080/clients/1
-Content-Type: application/x-www-form-urlencoded
-
-embg=2222222222222&name=Ace&age=22&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
+plate=AA112&mark=BMW&model=m2&color=metalblue&yearOfProduction=2017&cost=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
 
 > {%
 client.test("Request executed successfully", function() {
@@ -81,5 +79,57 @@ client.test("Request executed successfully", function() {
   client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
 });
 %}
+
+###
+POST http://localhost:8080/cars/1
+Content-Type: application/x-www-form-urlencoded
+rating: 4
+
+plate=AA112&mark=Ford&model=Focuse&color=blue&yearOfProduction=2017&cost=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
+
+
+###
+POST http://localhost:8080/cars/carHistories
+Content-Type: application/x-www-form-urlencoded
+carId: 3
+
+registrationDate=2018-09-26&breaksStatus=good&frontGlassStatus=good&wheelStatus=bad&engineStatus=fine&kmPassed=220000&description=LOrese Fokume dorum lo iso ena kazamanionime!
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
+
+
+###
+GET http://localhost:8080/cars/carHistories/1
+Content-Type: application/x-www-form-urlencoded
+
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
+
+
+###
+DELETE http://localhost:8080/cars/carHistories/2
+Content-Type: application/x-www-form-urlencoded
+
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
+
 
 ###

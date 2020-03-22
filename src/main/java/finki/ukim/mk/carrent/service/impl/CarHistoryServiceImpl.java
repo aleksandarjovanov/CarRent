@@ -51,4 +51,12 @@ public class CarHistoryServiceImpl implements CarHistoryService {
     public void deleteById(Long carHistoryId) {
         this.carHistoryRepository.deleteById(carHistoryId);
     }
+
+    @Override
+    public CarHistory editHistory(Long historyId, Long carId, LocalDate registrationDate, String breaksStatus, String frontGlassStatus, String wheelStatus, String engineStatus, int kmPassed, String description) {
+        CarHistory ch = findById(historyId);
+        Car car = this.carRepository.findById(carId).orElseThrow(InvalidCarException::new);
+        ch.createCarHistory(registrationDate, breaksStatus, frontGlassStatus, wheelStatus, engineStatus, kmPassed, description, car);
+        return this.carHistoryRepository.save(ch);
+    }
 }

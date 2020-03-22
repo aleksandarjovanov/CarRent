@@ -9,9 +9,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface JpaCarRepository extends JpaRepository<Car,Long> {
-    @Query("select c from Car c " +
-            "WHERE c.mark like :term")
-    List<Car> searchCars(@Param("term") String term);
+
+    List<Car> findByMarkContaining(String mark);
 
     List<Car> findByRenter_Id(Long renter_Id);
 

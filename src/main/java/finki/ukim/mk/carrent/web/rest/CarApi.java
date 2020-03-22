@@ -2,13 +2,14 @@ package finki.ukim.mk.carrent.web.rest;
 
 import finki.ukim.mk.carrent.model.Car;
 import finki.ukim.mk.carrent.model.CarHistory;
-import finki.ukim.mk.carrent.model.Client;
-import finki.ukim.mk.carrent.model.combinedResult.CarAndTerminesCombined;
+import finki.ukim.mk.carrent.model.Termin;
 import finki.ukim.mk.carrent.service.CarHistoryService;
 import finki.ukim.mk.carrent.service.CarService;
 import finki.ukim.mk.carrent.service.TerminService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -32,8 +33,8 @@ public class CarApi {
     }
 
     @GetMapping("/{carId}/termines")
-    public CarAndTerminesCombined getCarAndTermines(@PathVariable Long carId){
-        return new CarAndTerminesCombined(this.carService.findById(carId), this.terminService.getTerminesByCarId(carId));
+    public List<Termin> getCarTermines(@PathVariable Long carId){
+        return this.terminService.getTerminesByCarId(carId);
     }
 
     @PostMapping
@@ -88,5 +89,41 @@ public class CarApi {
         return this.carService.editCar(carId, plate, mark, model, color, yearOfProduction, cost, imgLink, renterId);
     }
 
+    @PostMapping("/carHistories")
+    public CarHistory createCarHistory(@RequestHeader Long carId,
+                                       @RequestParam("registrationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate registrationDate,
+                                       @RequestParam String breaksStatus,
+                                       @RequestParam String frontGlassStatus,
+                                       @RequestParam String wheelStatus,
+                                       @RequestParam String engineStatus,
+                                       @RequestParam int kmPassed,
+                                       @RequestParam String description
+                                       ){
+        return this.carHistoryService.createCarHistory(registrationDate, breaksStatus, frontGlassStatus, wheelStatus, engineStatus, kmPassed, description, carId);
+    }
+
+    @DeleteMapping("/carHistories/{historyId}")
+    public void deleteCarHistory(@PathVariable Long historyId){
+        this.carHistoryService.deleteById(historyId);
+    }
+
+    @GetMapping("carHistories/{carId}")
+    public List<CarHistory> getHistoriesByCar(@PathVariable Long carId){
+        return this.carHistoryService.searchByCarId(carId);
+    }
+
+    @PatchMapping("/carHistories/{historyId}")
+    public CarHistory editCarHistory(@PathVariable Long historyId,
+                                     @RequestHeader Long carId,
+                                     @RequestParam("registrationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate registrationDate,
+                                     @RequestParam String breaksStatus,
+                                     @RequestParam String frontGlassStatus,
+                                     @RequestParam String wheelStatus,
+                                     @RequestParam String engineStatus,
+                                     @RequestParam int kmPassed,
+                                     @RequestParam String description
+                                     ){
+        return this.carHistoryService.editHistory(historyId, carId, registrationDate, breaksStatus, frontGlassStatus, wheelStatus, engineStatus, kmPassed, description);
+    }
 
 }

@@ -1,7 +1,7 @@
 POST http://localhost:8080/clients
 Content-Type: application/x-www-form-urlencoded
 
-embg=2512997164229&name=Simeon&age=31&sex=unoriented&driverLicenceNumber=Aa323OS&crimeRecord=false
+embg=2512997164229&name=Vojdan&age=31&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
 
 > {%
 client.test("Request executed successfully", function() {
@@ -38,7 +38,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients?name=o
+GET http://localhost:8080/clients?name=V
 
 > {%
 client.test("Request executed successfully", function() {
@@ -49,7 +49,7 @@ client.test("Request executed successfully", function() {
 ###
 POST http://localhost:8080/clients/follow
 clientId: 2
-renterId: 2
+renterId: 1
 
 > {%
 client.test("Request executed successfully", function() {
@@ -59,7 +59,7 @@ client.test("Request executed successfully", function() {
 
 ###
 POST http://localhost:8080/clients/unFollow
-clientId: 4
+clientId: 2
 renterId: 1
 
 > {%
@@ -72,7 +72,7 @@ client.test("Request executed successfully", function() {
 PATCH http://localhost:8080/clients/1
 Content-Type: application/x-www-form-urlencoded
 
-embg=2222222222222&name=Ace&age=22&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
+embg=25129971264229&name=Simeon&age=21&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
 
 > {%
 client.test("Request executed successfully", function() {
