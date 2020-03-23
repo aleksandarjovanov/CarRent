@@ -34,17 +34,22 @@ public class ReservationApi {
     }
 
     @PostMapping
-    public Reservation addReservation(@RequestHeader Long clientId,
+    public void addReservation(@RequestHeader Long clientId,
                                       @RequestHeader Long carId,
                                       @RequestParam String comment,
                                       @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
                                       @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
                                       HttpServletResponse response
                                       ) throws IOException {
-        return this.reservationService.createReservation(clientId, carId, comment, from, to);
+        if(from.compareTo(to) >= 0){
+            response.sendRedirect("/reservations/error");   // not sure
+        }
+        else{
+            this.reservationService.createReservation(clientId, carId, comment, from, to);
+        }
     }
 
-    @GetMapping("/error") //no-usage
+    @GetMapping("/error")
     public String errorMessage(){
         return "Please input correct dates";
     }
