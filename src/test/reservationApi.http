@@ -58,7 +58,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/reservations?name=Riste
+GET http://localhost:8080/reservations?name=o
 
 > {%
 client.test("Request executed successfully", function() {
@@ -72,41 +72,6 @@ GET http://localhost:8080/reservations/active
 > {%
 client.test("Request executed successfully", function() {
   client.assert(response.status === 400, "Response status is not 400");
-});
-%}
-
-###
-POST http://localhost:8080/clients/follow
-clientId: 2
-renterId: 1
-
-> {%
-client.test("Request executed successfully", function() {
-  client.assert(response.status === 400, "Response status is not 400");
-});
-%}
-
-###
-POST http://localhost:8080/clients/unFollow
-clientId: 2
-renterId: 1
-
-> {%
-client.test("Request executed successfully", function() {
-  client.assert(response.status === 400, "Response status is not 400");
-});
-%}
-
-###
-PATCH http://localhost:8080/clients/1
-Content-Type: application/x-www-form-urlencoded
-
-embg=25129971264229&name=Simeon&age=21&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
-
-> {%
-client.test("Request executed successfully", function() {
-  client.assert(response.status === 200, "Response status is not 201");
-  client.assert(response.body.hasOwnProperty("slotId"), 'Can not find the slotId');
 });
 %}
 
