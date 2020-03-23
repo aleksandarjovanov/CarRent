@@ -17,5 +17,5 @@ public interface JpaReservationRepository extends JpaRepository<Reservation, Lon
 
     List<Reservation> findByClientName(String name);
 
-    List<Reservation> findReservationsByToIsLessThan(LocalDate now);
+    List<Reservation> findReservationsByToIsGreaterThan(LocalDate now);
 }

@@ -55,7 +55,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Override
     public List<Reservation> getActiveReservations(LocalDate now) {
-        return this.jpaReservationRepository.findReservationsByToIsLessThan(now);
+        return this.jpaReservationRepository.findReservationsByToIsGreaterThan(now);
     }
 
 }

@@ -1,7 +1,7 @@
 POST http://localhost:8080/clients
 Content-Type: application/x-www-form-urlencoded
 
-embg=2512997164229&name=Vojdan&age=31&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
+embg=2512997164229&name=Riste&age=31&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
 
 > {%
 client.test("Request executed successfully", function() {
@@ -48,7 +48,7 @@ client.test("Request executed successfully", function() {
 
 ###
 POST http://localhost:8080/clients/follow
-clientId: 2
+clientId: 1
 renterId: 1
 
 > {%

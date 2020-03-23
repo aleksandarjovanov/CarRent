@@ -1,6 +1,9 @@
 package finki.ukim.mk.carrent.model;
 
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -40,13 +43,4 @@ public class Reservation {
         this.to = to;
     }
 
-    @Override
-    public String toString() {
-        return "Reservation{" +
-                "id=" + id +
-                ", comment='" + comment + '\'' +
-                ", from=" + from +
-                ", to=" + to +
-                '}';
-    }
 }

@@ -1,9 +1,9 @@
 POST http://localhost:8080/reservations
 Content-Type: application/x-www-form-urlencoded
-clientId: 1
-carId: 3
+clientId: 2
+carId: 2
 
-comment=wowow&from=2020-04-10&to=2020-04-20
+comment=wowow&from=2020-04-01&to=2020-04-05
 
 > {%
 client.test("Request executed successfully", function() {
@@ -13,7 +13,7 @@ client.test("Request executed successfully", function() {
 
 
 ###
-GET http://localhost:8080/clients/1
+GET http://localhost:8080/reservations/1
 
 > {%
 client.test("Request executed successfully", function() {
@@ -22,7 +22,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients
+GET http://localhost:8080/reservations
 
 > {%
 client.test("Request executed successfully", function() {
@@ -31,7 +31,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-DELETE http://localhost:8080/reservations/11
+DELETE http://localhost:8080/reservations/2
 
 > {%
 client.test("Request executed successfully", function() {
@@ -40,7 +40,34 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients?name=V
+GET http://localhost:8080/reservations?clientId=1
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+###
+GET http://localhost:8080/reservations?renterId=2
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+###
+GET http://localhost:8080/reservations?name=Riste
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 400, "Response status is not 400");
+});
+%}
+
+###
+GET http://localhost:8080/reservations/active
 
 > {%
 client.test("Request executed successfully", function() {

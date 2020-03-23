@@ -8,6 +8,8 @@ import net.bytebuddy.asm.Advice;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -36,9 +38,15 @@ public class ReservationApi {
                                       @RequestHeader Long carId,
                                       @RequestParam String comment,
                                       @RequestParam("from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-                                      @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to
-                                      ){
+                                      @RequestParam("to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+                                      HttpServletResponse response
+                                      ) throws IOException {
         return this.reservationService.createReservation(clientId, carId, comment, from, to);
+    }
+
+    @GetMapping("/error") //no-usage
+    public String errorMessage(){
+        return "Please input correct dates";
     }
 
     @GetMapping
@@ -68,7 +76,7 @@ public class ReservationApi {
 
     @GetMapping("/active")
     public List<Reservation> getActiveReservations(){
-        return this.reservationService.getActiveReservations(LocalDate.now());
+        return this.reservationService.getActiveReservations(LocalDate.of(2020, 4, 1));
     }
 
 }

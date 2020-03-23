@@ -1,8 +1,8 @@
 POST http://localhost:8080/cars
 Content-Type: application/x-www-form-urlencoded
-renterId: 1
+renterId: 2
 
-plate=AA112&mark=Ford&model=Focuse&color=blue&yearOfProduction=2017&cost=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
+plate=AA112&mark=KIIIAA&model=Focuse&color=blue&yearOfProduction=2017&cost=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
 
 > {%
 client.test("Request executed successfully", function() {
@@ -48,7 +48,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/cars/2/termines
+GET http://localhost:8080/cars/1/termines
 
 > {%
 client.test("Request executed successfully", function() {
@@ -97,7 +97,7 @@ client.test("Request executed successfully", function() {
 ###
 POST http://localhost:8080/cars/carHistories
 Content-Type: application/x-www-form-urlencoded
-carId: 3
+carId: 1
 
 registrationDate=2018-09-26&breaksStatus=good&frontGlassStatus=good&wheelStatus=bad&engineStatus=fine&kmPassed=220000&description=LOrese Fokume dorum lo iso ena kazamanionime!
 
