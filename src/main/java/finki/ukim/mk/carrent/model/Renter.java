@@ -24,16 +24,18 @@ public class Renter {
 
     @Enumerated(EnumType.STRING)
     private Sex sex;
+    private String imgUrl;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Client> followers;
 
-    public void createRenter(String embg, String name, int age, Sex sex, List<Client> followersList){
+    public void createRenter(String embg, String name, int age, Sex sex, String imgUrl, List<Client> followersList){
         this.embg = embg;
         this.name = name;
         this.age = age;
         this.sex = sex;
+        this.imgUrl = imgUrl;
         this.followers = followersList;
     }
 }

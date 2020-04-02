@@ -30,6 +30,7 @@ public class Client {
     private Sex sex;
     private String driverLicenceNumber;
     private boolean crimeRecord;
+    private String imgUrl;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "followers")
@@ -46,13 +47,14 @@ public class Client {
         renter.getFollowers().remove(this);
     }
 
-    public void createClient(String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord){
+    public void createClient(String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl){
         this.embg = embg;
         this.name = name;
         this.age = age;
         this.sex = sex;
         this.driverLicenceNumber = driverLicenceNumber;
         this.crimeRecord = crimeRecord;
+        this.imgUrl = imgUrl;
         this.following = new ArrayList<>();
     }
 

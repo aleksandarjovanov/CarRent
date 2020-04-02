@@ -29,9 +29,10 @@ public class RenterApi {
     public Renter addRenter(@RequestParam String embg,
                             @RequestParam String name,
                             @RequestParam int age,
-                            @RequestParam Sex sex
+                            @RequestParam Sex sex,
+                            @RequestParam String imgUrl
                             ){
-        return this.renterService.createRenter(embg, name, age, sex, new ArrayList<>());
+        return this.renterService.createRenter(embg, name, age, sex, imgUrl, new ArrayList<>());
     }
 
     @GetMapping
@@ -54,9 +55,10 @@ public class RenterApi {
                              @RequestParam(value = "embg", required = false) String embg,
                              @RequestParam(value = "name", required = false) String name,
                              @RequestParam(value = "age", required = false) int age,
-                             @RequestParam(value = "sex", required = false) Sex sex
+                             @RequestParam(value = "sex", required = false) Sex sex,
+                             @RequestParam String imgUrl
     ){
-        return this.renterService.editRenter(renterId, embg, name, age, sex);
+        return this.renterService.editRenter(renterId, embg, name, age, sex, imgUrl);
     }
     @GetMapping("/followers/{renterId}")
     public List<Client> getAllFollowers(@PathVariable Long renterId){

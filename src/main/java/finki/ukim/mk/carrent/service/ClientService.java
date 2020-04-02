@@ -14,7 +14,7 @@ public interface ClientService {
 
     Client findById(Long clientId);
 
-    Client createClient(String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord);
+    Client createClient(String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl);
 
     List<Client> getAllClients();
 
@@ -22,5 +22,5 @@ public interface ClientService {
 
     void deleteById(Long clientId);
 
-    Client editClient(Long clientId, String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord);
+    Client editClient(Long clientId, String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl);
 }

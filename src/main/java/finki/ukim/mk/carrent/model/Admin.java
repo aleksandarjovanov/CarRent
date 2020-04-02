@@ -19,6 +19,7 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String imgUrl;
 
     public void createAdmin(String name){
         this.name = name;

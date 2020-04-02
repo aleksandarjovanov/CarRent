@@ -29,9 +29,10 @@ public class ClientApi {
                             @RequestParam("age") int age,
                             @RequestParam("sex") Sex sex,
                             @RequestParam("driverLicenceNumber") String driverLicenceNumber,
-                            @RequestParam("crimeRecord") boolean crimeRecord
+                            @RequestParam("crimeRecord") boolean crimeRecord,
+                            @RequestParam("imgUrl") String imgUrl
                             ){
-        return this.clientService.createClient(embg, name, age, sex, driverLicenceNumber,crimeRecord);
+        return this.clientService.createClient(embg, name, age, sex, driverLicenceNumber,crimeRecord, imgUrl);
     }
 
     @GetMapping
@@ -70,9 +71,10 @@ public class ClientApi {
                              @RequestParam(value = "age", required = false) int age,
                              @RequestParam(value = "sex", required = false) Sex sex,
                              @RequestParam(value = "driverLicenceNumber", required = false) String driverLicenceNumber,
-                             @RequestParam(value = "crimeRecord", required = false) boolean crimeRecord
+                             @RequestParam(value = "crimeRecord", required = false) boolean crimeRecord,
+                             @RequestParam("imgUrl") String imgUrl
                              ){
-        return this.clientService.editClient(clientId, embg, name, age, sex, driverLicenceNumber, crimeRecord);
+        return this.clientService.editClient(clientId, embg, name, age, sex, driverLicenceNumber, crimeRecord, imgUrl);
     }
 
 

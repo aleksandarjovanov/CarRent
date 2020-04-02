@@ -1,7 +1,7 @@
 POST http://localhost:8080/clients
 Content-Type: application/x-www-form-urlencoded
 
-embg=2512997164229&name=Riste&age=31&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
+embg=2512997164229&name=Riste&age=31&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false&imgUrl=someurl
 
 > {%
 client.test("Request executed successfully", function() {
@@ -72,7 +72,7 @@ client.test("Request executed successfully", function() {
 PATCH http://localhost:8080/clients/1
 Content-Type: application/x-www-form-urlencoded
 
-embg=25129971264229&name=Simeon&age=21&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false
+embg=25129971264229&name=Simeon&age=21&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false&imgUrl=someurl
 
 > {%
 client.test("Request executed successfully", function() {

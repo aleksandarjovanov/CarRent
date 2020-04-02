@@ -48,9 +48,9 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client createClient(String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord) {
+    public Client createClient(String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl) {
         Client client = new Client();
-        client.createClient(embg, name, age, sex, driverLicenceNumber, crimeRecord);
+        client.createClient(embg, name, age, sex, driverLicenceNumber, crimeRecord, imgUrl);
         return this.clientRepository.save(client);
     }
 
@@ -70,9 +70,9 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client editClient(Long clientId, String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord) {
+    public Client editClient(Long clientId, String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl) {
         Client client = findById(clientId);
-        client.createClient(embg,name,age,sex,driverLicenceNumber,crimeRecord);
+        client.createClient(embg,name,age,sex,driverLicenceNumber,crimeRecord, imgUrl);
         return this.clientRepository.save(client);
     }
 }
