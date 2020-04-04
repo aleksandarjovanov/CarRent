@@ -1,11 +1,24 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import SingleClient from "./SingleClient";
+import clientsService from "../API/axiosIngredientService"
 import './Style/ListClients.css'
 import './Style/util.css'
 
-const ListClients = (props) => {
-        //misalm deka ovaa listata nema da ja prima kako props tuku ona od tuka ke go prave poviko
-    const singleClient = props.clients.map((client, index) => {
+const ListClients = () => {
+
+    useEffect(() =>{
+        loadClients();
+    },[]);
+
+    const loadClients = () => {
+        clientsService.fetchClients().then(response=>{
+            setClients(response.data);
+        })
+    };
+
+    const [clients, setClients] = useState([]);
+
+    const singleClient = clients.map((client) => {
 
             return(
                 <SingleClient single={client} key={client.id} />
@@ -13,19 +26,19 @@ const ListClients = (props) => {
         });
 
     return (
-    <div class="limiter">
-        <div class="container-table100">
-            <div class="wrap-table100">
-                <div class="table100">
+    <div className="limiter">
+        <div className="container-table100">
+            <div className="wrap-table100">
+                <div className="table100">
                     <table>
                         <thead>
-                        <tr class="table100-head">
-                            <th class="column1">Client ID</th>
-                            <th class="column2">Name</th>
-                            <th class="column3">Gender</th>
-                            <th class="column4">Age</th>
-                            <th class="column5">Driving licence</th>
-                            <th class="column6">Crime record</th>
+                        <tr className="table100-head">
+                            <th className="column1">Client ID</th>
+                            <th className="column2">Name</th>
+                            <th className="column3">Gender</th>
+                            <th className="column4">Age</th>
+                            <th className="column5">Driving licence</th>
+                            <th className="column6">Crime record</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -38,6 +51,6 @@ const ListClients = (props) => {
     </div>
 
     );
-}
+};
 
 export default ListClients;

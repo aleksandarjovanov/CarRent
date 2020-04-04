@@ -105,11 +105,6 @@ iframe {
 .container-table100 {
     width: 100%;
     min-height: 100vh;
-    background: #c850c0;
-    background: -webkit-linear-gradient(45deg, #36304a, #c6cdcf);
-    background: -o-linear-gradient(45deg, #36304a, #c6cdcf);
-    background: -moz-linear-gradient(45deg, #36304a, #c6cdcf);
-    background: linear-gradient(45deg, #36304a, #c6cdcf);
 
     display: -webkit-box;
     display: -webkit-flex;
