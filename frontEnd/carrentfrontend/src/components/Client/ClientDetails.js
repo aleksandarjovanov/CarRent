@@ -1,37 +1,41 @@
 import React, {useState, useEffect} from 'react';
+import {useHistory} from "react-router-dom";
 import clientsService from "../API/axiosIngredientService"
 import './Style/ClientDetails.css'
 
-const ClientDetails = ({match}) => {
+const ClientDetails = (props) => {
 
     useEffect(() =>{
         loadClient();
     },[]);
 
+    const [client, setClient] = useState([]);
+
+    const history = useHistory();
+
     const loadClient = () => {
-        clientsService.fetchClient(match.params.id).then(response=>{
+        clientsService.fetchClient(props.match.params.id).then(response=>{
             setClient(response.data);
         })
     };
 
-    const [client, setClient] = useState([]);
 
     return (
         <div className="card">
             <div className="cardKid1"><img src={client.imgUrl} alt="John" style={{width:"100%"}}/></div>
             <div className="cardKid2">
                 <h1>{client.name}</h1>
-                <p className="title">Renting the best cars!</p>
+                <p className="title">In love with the wheels!</p>
                 <p>Embg: {client.embg}</p>
                 <p>Age: {client.age}</p>
                 <p>Gender: {client.sex}</p>
                 <p>Driving Licence: {client.driverLicenceNumber}</p>
                 <p>Crime Record: {client.crimeRecord+""}</p>
                 <p>
-                    <button className="button1">Edit</button>
+                    <button onClick={() => props.onEdit(client.id)} className="button1">Edit</button>
                 </p>
                 <p>
-                    <button className="button2">Delete</button>
+                    <button onClick={() => props.onDelete(client.id)} className="button2">Delete</button>
                 </p>
             </div>
         </div>
