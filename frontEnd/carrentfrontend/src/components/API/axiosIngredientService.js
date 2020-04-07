@@ -1,4 +1,5 @@
-import axios from "./customAxios"
+import axios from "./customAxios";
+import qs from 'qs';
 
 
 const ingredientService = {
@@ -11,10 +12,26 @@ const ingredientService = {
     deleteClient: (id)=> {
         return axios.delete("clients/" + id);
     },
-    getAllPizzasWithIngredient: (name)=> {
-        return axios.get("ingredients/" + name + "/pizzas");
+    addClient: (term) => {
+
+        const formParams = qs.stringify(term);
+        return axios.post("/clients",formParams, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }
+        });
+    },
+    updateClient : (client) => {
+
+        const clientId= client.id;
+        const formParams = qs.stringify(client);
+        return axios.patch("clients/"+clientId, formParams, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }
+        });
     }
 
-}
+};
 
 export default ingredientService;

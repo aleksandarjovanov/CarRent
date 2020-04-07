@@ -50,7 +50,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Override
     public List<Reservation> getReservationsByClientName(String name) {
-        return this.jpaReservationRepository.findByClient_NameContaining(name);
+        return this.jpaReservationRepository.findByClient_FirstNameContaining(name);
     }
 
     @Override

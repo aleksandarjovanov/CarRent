@@ -25,14 +25,15 @@ public class ClientApi {
 
     @PostMapping
     public Client addClient(@RequestParam("embg") String embg,
-                            @RequestParam("name") String name,
+                            @RequestParam("firstName") String firstName,
+                            @RequestParam("lastName") String lastName,
                             @RequestParam("age") int age,
                             @RequestParam("sex") Sex sex,
                             @RequestParam("driverLicenceNumber") String driverLicenceNumber,
                             @RequestParam("crimeRecord") boolean crimeRecord,
                             @RequestParam("imgUrl") String imgUrl
                             ){
-        return this.clientService.createClient(embg, name, age, sex, driverLicenceNumber,crimeRecord, imgUrl);
+        return this.clientService.createClient(embg, firstName, lastName, age, sex, driverLicenceNumber,crimeRecord, imgUrl);
     }
 
     @GetMapping
@@ -45,9 +46,9 @@ public class ClientApi {
         this.clientService.deleteById(clientId);
     }
 
-    @GetMapping(params = "name")
-    public List<Client> searchClientsByName(@RequestParam String name){
-        return this.clientService.searchClientsByName(name);
+    @GetMapping(params = "firstName")
+    public List<Client> searchClientsByName(@RequestParam String firstName){
+        return this.clientService.searchClientsByName(firstName);
     }
 
     @PostMapping("/follow")
@@ -67,14 +68,15 @@ public class ClientApi {
     @PatchMapping("/{clientId}")
     public Client editClient(@PathVariable Long clientId,
                              @RequestParam(value = "embg", required = false) String embg,
-                             @RequestParam(value = "name", required = false) String name,
+                             @RequestParam(value = "firstName", required = false) String firstName,
+                             @RequestParam(value = "lastName", required = false) String lastName,
                              @RequestParam(value = "age", required = false) int age,
                              @RequestParam(value = "sex", required = false) Sex sex,
                              @RequestParam(value = "driverLicenceNumber", required = false) String driverLicenceNumber,
                              @RequestParam(value = "crimeRecord", required = false) boolean crimeRecord,
-                             @RequestParam("imgUrl") String imgUrl
+                             @RequestParam(value = "imgUrl", required = false) String imgUrl
                              ){
-        return this.clientService.editClient(clientId, embg, name, age, sex, driverLicenceNumber, crimeRecord, imgUrl);
+        return this.clientService.editClient(clientId, embg, firstName, lastName, age, sex, driverLicenceNumber, crimeRecord, imgUrl);
     }
 
 

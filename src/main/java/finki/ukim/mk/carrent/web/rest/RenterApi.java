@@ -27,12 +27,13 @@ public class RenterApi {
 
     @PostMapping
     public Renter addRenter(@RequestParam String embg,
-                            @RequestParam String name,
+                            @RequestParam String firstName,
+                            @RequestParam String lastName,
                             @RequestParam int age,
                             @RequestParam Sex sex,
                             @RequestParam String imgUrl
                             ){
-        return this.renterService.createRenter(embg, name, age, sex, imgUrl, new ArrayList<>());
+        return this.renterService.createRenter(embg, firstName, lastName, age, sex, imgUrl, new ArrayList<>());
     }
 
     @GetMapping
@@ -53,12 +54,13 @@ public class RenterApi {
     @PatchMapping("/{renterId}")
     public Renter editRenter(@PathVariable Long renterId,
                              @RequestParam(value = "embg", required = false) String embg,
-                             @RequestParam(value = "name", required = false) String name,
+                             @RequestParam(value = "firstName", required = false) String firstName,
+                             @RequestParam(value = "lastName", required = false) String lastName,
                              @RequestParam(value = "age", required = false) int age,
                              @RequestParam(value = "sex", required = false) Sex sex,
                              @RequestParam String imgUrl
     ){
-        return this.renterService.editRenter(renterId, embg, name, age, sex, imgUrl);
+        return this.renterService.editRenter(renterId, embg, firstName, lastName, age, sex, imgUrl);
     }
     @GetMapping("/followers/{renterId}")
     public List<Client> getAllFollowers(@PathVariable Long renterId){

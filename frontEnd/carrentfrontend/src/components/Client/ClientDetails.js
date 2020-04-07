@@ -24,8 +24,9 @@ const ClientDetails = (props) => {
         <div className="card">
             <div className="cardKid1"><img src={client.imgUrl} alt="John" style={{width:"100%"}}/></div>
             <div className="cardKid2">
-                <h1>{client.name}</h1>
+                <h1>{client.firstName}</h1>
                 <p className="title">In love with the wheels!</p>
+                <p>Last Name: {client.lastName}</p>
                 <p>Embg: {client.embg}</p>
                 <p>Age: {client.age}</p>
                 <p>Gender: {client.sex}</p>

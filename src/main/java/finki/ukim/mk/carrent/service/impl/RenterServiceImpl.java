@@ -32,9 +32,9 @@ public class RenterServiceImpl implements RenterService {
     }
 
     @Override
-    public Renter createRenter(String embg, String name, int age, Sex sex, String imgUrl, List<Client> followersList) {
+    public Renter createRenter(String embg, String firstName, String lastName, int age, Sex sex, String imgUrl, List<Client> followersList) {
         Renter renter = new Renter();
-        renter.createRenter(embg, name, age, sex, imgUrl, followersList);
+        renter.createRenter(embg, firstName, lastName, age, sex, imgUrl, followersList);
         return this.renterRepository.save(renter);
     }
 
@@ -54,9 +54,9 @@ public class RenterServiceImpl implements RenterService {
     }
 
     @Override
-    public Renter editRenter(Long renterId, String embg, String name, int age, Sex sex, String imgUrl) {
+    public Renter editRenter(Long renterId, String embg, String firstName, String lastName, int age, Sex sex, String imgUrl) {
         Renter renter = findById(renterId);
-        renter.createRenter(embg, name, age, sex, imgUrl, renter.getFollowers());
+        renter.createRenter(embg, firstName, lastName, age, sex, imgUrl, renter.getFollowers());
         return this.renterRepository.save(renter);
     }
 }

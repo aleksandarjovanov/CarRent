@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface JpaRenterRepository extends JpaRepository<Renter, Long> {
 
-    List<Renter> findByNameContaining(String name);
+    List<Renter> findByFirstNameContaining(String name);
 }

@@ -1,7 +1,7 @@
 POST http://localhost:8080/clients
 Content-Type: application/x-www-form-urlencoded
 
-embg=2512997464018&name=Viktorija&age=22&sex=female&driverLicenceNumber=Aa323OS&crimeRecord=false&imgUrl=https://i.pinimg.com/originals/6f/a2/5f/6fa25f61d325b980f7b602136b18d0e7.png
+embg=2512997464018&firstName=wwww&lastName=qqqq&age=22&sex=female&driverLicenceNumber=Aa323OS&crimeRecord=true&imgUrl=https://i.pinimg.com/originals/6f/a2/5f/6fa25f61d325b980f7b602136b18d0e7.png
 
 > {%
 client.test("Request executed successfully", function() {
@@ -38,7 +38,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients?name=V
+GET http://localhost:8080/clients?firstName=e
 
 > {%
 client.test("Request executed successfully", function() {
@@ -48,7 +48,7 @@ client.test("Request executed successfully", function() {
 
 ###
 POST http://localhost:8080/clients/follow
-clientId: 1
+clientId: 3
 renterId: 1
 
 > {%
@@ -69,10 +69,10 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-PATCH http://localhost:8080/clients/1
+PATCH http://localhost:8080/clients/2
 Content-Type: application/x-www-form-urlencoded
 
-embg=25129971264229&name=Simeon&age=21&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false&imgUrl=someurl
+embg=25129971264229&firstName=Simeon&lastName=Mancev&age=21&sex=male&driverLicenceNumber=Aa323OS&crimeRecord=false&imgUrl=someurl
 
 > {%
 client.test("Request executed successfully", function() {

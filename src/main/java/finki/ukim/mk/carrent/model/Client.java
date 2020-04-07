@@ -23,7 +23,8 @@ public class Client {
     private String embg;
 
     @Column(name = "client_name")
-    private  String name;
+    private String firstName;
+    private String lastName;
     private int age;
 
     @Enumerated(EnumType.STRING)
@@ -47,9 +48,10 @@ public class Client {
         renter.getFollowers().remove(this);
     }
 
-    public void createClient(String embg, String name, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl){
+    public void createClient(String embg, String firstName, String lastName, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl){
         this.embg = embg;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
         this.sex = sex;
         this.driverLicenceNumber = driverLicenceNumber;

@@ -19,7 +19,8 @@ public class Renter {
     private String embg;
 
     @Column(name = "renter_name")
-    private String name;
+    private String firstName;
+    private String lastName;
     private int age;
 
     @Enumerated(EnumType.STRING)
@@ -30,9 +31,10 @@ public class Renter {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Client> followers;
 
-    public void createRenter(String embg, String name, int age, Sex sex, String imgUrl, List<Client> followersList){
+    public void createRenter(String embg, String firstName, String lastName, int age, Sex sex, String imgUrl, List<Client> followersList){
         this.embg = embg;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
         this.sex = sex;
         this.imgUrl = imgUrl;

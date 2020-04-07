@@ -1,9 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import {useHistory} from "react-router-dom";
 import SingleClient from "./SingleClient";
 import './Style/ListClients.css'
 import './Style/util.css'
 
 const ListClients = (props) => {
+
+    const history = useHistory();
+
+    const handleAdd = () => {
+        history.push("/clients/add");
+    };
 
     const singleClient = props.clients.map((client) => {
 
@@ -21,17 +28,19 @@ const ListClients = (props) => {
                             <thead>
                             <tr className="table100-head">
                                 <th className="column1">Client ID</th>
-                                <th className="column2">Name</th>
+                                <th className="column2">First Name</th>
+                                <th className="column2">Last Name</th>
                                 <th className="column3">Gender</th>
                                 <th className="column4">Age</th>
                                 <th className="column5">Driving licence</th>
-                                <th className="column6">Crime record</th>
                             </tr>
                             </thead>
                             <tbody>
                             {singleClient}
                             </tbody>
                         </table>
+                        <br/>
+                        <button className="btn btn-success" onClick={handleAdd}>Add Client</button>
                     </div>
                 </div>
             </div>
