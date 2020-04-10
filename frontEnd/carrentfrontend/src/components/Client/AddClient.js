@@ -1,6 +1,9 @@
 import React from "react";
+import {useHistory} from "react-router-dom";
 
 const AddClient = (props) => {
+
+    const history = useHistory();
 
     const onFormSubmit = (e) => {
         e.preventDefault();
@@ -18,6 +21,9 @@ const AddClient = (props) => {
         props.onCreate(newClient);
     };
 
+    const goBack = () => {
+        history.push("/clients/list")
+    };
 
     return(
         <div style={{margin: "60px"}}>
@@ -98,7 +104,7 @@ const AddClient = (props) => {
                                 <div className="col-md-8">
                                     <input type="submit" className="btn btn-warning" value="Save Changes"/>
                                     <span> </span>
-                                    <input type="button" className="btn btn-dark" value="Cancel"/>
+                                    <input onClick={goBack} type="button" className="btn btn-dark" value="Cancel"/>
                                 </div>
                             </div>
                         </form>

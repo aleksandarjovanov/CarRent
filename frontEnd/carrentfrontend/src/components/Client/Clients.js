@@ -6,7 +6,7 @@ import ClientDetails from "./ClientDetails";
 import EditClient from "./EditClient";
 import AddClient from "./AddClient";
 
-const Client = ({match}) => {
+const Clients = ({match}) => {
 
     useEffect(() =>{
         loadClients();
@@ -71,10 +71,17 @@ const Client = ({match}) => {
         history.push(`/clients/edit/${id}`);
     };
 
+    const searchClients = (firstName) => {
+        clientsService.searchClients(firstName).then(response=>{
+            setClients(response.data);
+            history.push("/clients/list");
+        })
+    };
+
 
     return (
         <div>
-            <Route path={`${match.path}/list`} exact render={() => <ListClients onDetails={clientDetails} clients={clients} />}/>
+            <Route path={`${match.path}/list`} exact render={() => <ListClients onDetails={clientDetails} clients={clients} onSearch={searchClients} />}/>
             <Route path={"/clients/details/:id"} exact render={(props) => <ClientDetails {...props} onDelete={deleteClient} onEdit={editClient}/>} />
             <Route path={"/clients/edit/:id"} exact render={(props) => <EditClient {...props} onSubmit={updateClient}/>} />
             <Route path={"/clients/add"} exact render={(props) => <AddClient {...props} onCreate={createClient}/>} />
@@ -82,4 +89,4 @@ const Client = ({match}) => {
     );
 };
 
-export default Client;
+export default Clients;

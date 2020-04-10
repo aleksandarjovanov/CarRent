@@ -21,7 +21,11 @@ public interface ReservationService {
 
     List<Reservation> getReservationsByRenterId(Long renterId);
 
+    List<Reservation> getReservationsByCarId(Long carId);
+
     List<Reservation> getReservationsByClientName(String name);
 
     List<Reservation> getActiveReservations(LocalDate now);
+
+    void deleteAll(List<Reservation> reservations);
 }

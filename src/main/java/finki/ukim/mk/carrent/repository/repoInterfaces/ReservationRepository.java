@@ -22,4 +22,8 @@ public interface ReservationRepository {
     List<Reservation> getReservationsByClientName(String name);
 
     List<Reservation> getActiveReservations(LocalDate now);
+
+    List<Reservation> getReservationsByCarId(Long carId);
+
+    void deleteAll(List<Reservation> reservations);
 }

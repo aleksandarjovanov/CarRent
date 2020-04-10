@@ -71,6 +71,11 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
+    public List<Reservation> getReservationsByCarId(Long carId) {
+        return this.reservationRepository.getReservationsByCarId(carId);
+    }
+
+    @Override
     public List<Reservation> getReservationsByClientName(String name) {
         return this.reservationRepository.getReservationsByClientName(name);
     }
@@ -78,6 +83,11 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public List<Reservation> getActiveReservations(LocalDate now) {
         return this.reservationRepository.getActiveReservations(now);
+    }
+
+    @Override
+    public void deleteAll(List<Reservation> reservations) {
+        this.reservationRepository.deleteAll(reservations);
     }
 
 }

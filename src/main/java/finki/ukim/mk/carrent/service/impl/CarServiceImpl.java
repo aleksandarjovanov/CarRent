@@ -2,17 +2,16 @@ package finki.ukim.mk.carrent.service.impl;
 
 import finki.ukim.mk.carrent.model.Car;
 import finki.ukim.mk.carrent.model.Renter;
-import finki.ukim.mk.carrent.model.Termin;
+import finki.ukim.mk.carrent.model.Reservation;
 import finki.ukim.mk.carrent.model.exceptions.InvalidCarException;
 import finki.ukim.mk.carrent.model.exceptions.InvalidRenterException;
 import finki.ukim.mk.carrent.repository.repoInterfaces.CarRepository;
 import finki.ukim.mk.carrent.repository.repoInterfaces.RenterRepository;
-import finki.ukim.mk.carrent.repository.repoInterfaces.TerminRepository;
 import finki.ukim.mk.carrent.service.CarService;
+import finki.ukim.mk.carrent.service.ReservationService;
 import finki.ukim.mk.carrent.service.TerminService;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
@@ -23,11 +22,13 @@ public class CarServiceImpl implements CarService {
     private final CarRepository carRepository;
     private final RenterRepository renterRepository;
     private final TerminService terminService;
+    private final ReservationService reservationService;
 
-    public CarServiceImpl(CarRepository carRepository, RenterRepository renterRepository, TerminService terminService) {
+    public CarServiceImpl(CarRepository carRepository, RenterRepository renterRepository, TerminService terminService, ReservationService reservationService) {
         this.carRepository = carRepository;
         this.renterRepository = renterRepository;
         this.terminService = terminService;
+        this.reservationService = reservationService;
     }
 
     @Override
@@ -58,6 +59,8 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void deleteById(Long carId) {
+        List<Reservation> reservations = this.reservationService.getReservationsByCarId(carId);
+        this.reservationService.deleteAll(reservations);
         this.carRepository.deleteById(carId);
     }
 
@@ -80,4 +83,5 @@ public class CarServiceImpl implements CarService {
         car.createCar(plate, mark, model, color, yearOfProduction, cost, imgLink, car.getRating(), car.getNumberOfRatings(), renter);
         return this.carRepository.save(car);
     }
+
 }

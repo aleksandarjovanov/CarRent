@@ -58,4 +58,14 @@ public class ReservationRepositoryImpl implements ReservationRepository {
         return this.jpaReservationRepository.findReservationsByToIsGreaterThan(now);
     }
 
+    @Override
+    public List<Reservation> getReservationsByCarId(Long carId) {
+        return this.jpaReservationRepository.findByCar_Id(carId);
+    }
+
+    @Override
+    public void deleteAll(List<Reservation> reservations) {
+        this.jpaReservationRepository.deleteAll(reservations);
+    }
+
 }

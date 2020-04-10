@@ -28,11 +28,9 @@ public class Reservation {
     private LocalDate to;
 
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private Client client;
 
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private Car car;
 
     public void createReservation(Client client, Car car, String comment, LocalDate from, LocalDate to){

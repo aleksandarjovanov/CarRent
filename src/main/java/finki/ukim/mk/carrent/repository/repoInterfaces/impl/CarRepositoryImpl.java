@@ -42,6 +42,7 @@ public class CarRepositoryImpl implements CarRepository {
         jpaCarRepository.deleteById(carId);
     }
 
+
     @Override
     public List<Car> getAllOwnedCarsByRenterId(Long renterId) {
         return jpaCarRepository.findByRenter_Id(renterId);

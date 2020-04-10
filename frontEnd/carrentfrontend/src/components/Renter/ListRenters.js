@@ -1,10 +1,10 @@
 import React from 'react';
 import {useHistory} from "react-router-dom";
 import SingleClient from "./SingleClient";
-import './Style/ListClients.css'
-import './Style/util.css'
+import '../Client/Style/ListClients.css'
+import '../Client/Style/util.css'
 
-const ListClients = (props) => {
+const ListRenters = (props) => {
 
     const history = useHistory();
 
@@ -60,4 +60,4 @@ const ListClients = (props) => {
 
 };
 
-export default ListClients;
+export default ListRenters;

@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -32,14 +33,12 @@ public class Car {
     private String color;
 
     private String imgLink;
-
     private int yearOfProduction;
     private int costPerDay;
     private double rating = 0;
     private int numberOfRatings = 0;
 
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Renter renter;
 
     public void calculateRating(int rating){

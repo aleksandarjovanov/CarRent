@@ -2,15 +2,15 @@ import axios from "./customAxios";
 import qs from 'qs';
 
 
-const ingredientService = {
-    fetchClients: ()=> {
-        return axios.get("clients");
+const rentersService = {
+    fetchRenters: ()=> {
+        return axios.get("renters");
     },
-    fetchClient: (id)=> {
-        return axios.get("clients/" + id);
+    fetchRenter: (id)=> {
+        return axios.get("renters/" + id);
     },
     deleteClient: (id)=> {
-        return axios.delete("clients/" + id);
+        return axios.delete("renters/" + id);
     },
     addClient: (term) => {
 
@@ -31,10 +31,10 @@ const ingredientService = {
             }
         });
     },
-    searchClients: (firsName)=> {
-        return axios.get(`/clients?firstName=${firsName}`);
+    searchRenters: (name)=> {
+        return axios.get(`/renters?name=${name}`);
     },
 
 };
 
-export default ingredientService;
+export default rentersService;

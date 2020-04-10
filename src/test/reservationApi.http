@@ -1,7 +1,7 @@
 POST http://localhost:8080/reservations
 Content-Type: application/x-www-form-urlencoded
-clientId: 2
-carId: 2
+clientId: 1
+carId: 1
 
 comment=wowow&from=2020-05-10&to=2020-05-14
 

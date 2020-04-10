@@ -1,8 +1,9 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Header from "../Header/Header";
-import Client from "../Client/Client";
+import Clients from "../Client/Clients";
 import './App.css';
+import Renters from "../Renter/Renters";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
           <Header/>
 
             <Switch>
-              <Route path={"/clients"} component={Client}/>
+              <Route path={"/clients"} component={Clients}/>
+              <Route path={"/renters"} component={Renters}/>
             </Switch>
 
         </div>

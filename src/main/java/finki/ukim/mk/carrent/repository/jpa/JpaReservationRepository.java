@@ -18,4 +18,6 @@ public interface JpaReservationRepository extends JpaRepository<Reservation, Lon
     List<Reservation> findByClient_FirstNameContaining(String name);
 
     List<Reservation> findReservationsByToIsGreaterThan(LocalDate now);
+
+    List<Reservation> findByCar_Id(Long carId);
 }

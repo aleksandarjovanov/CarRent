@@ -35,6 +35,10 @@ const EditClient = (props) => {
         setClient({...client, [paramName] : paramValue});
     };
 
+    const goBack = () => {
+        history.push("/clients/list")
+    };
+
     return(
       <div style={{margin: "60px"}}>
           <div className="container">
@@ -114,7 +118,7 @@ const EditClient = (props) => {
                               <div className="col-md-8">
                                   <input type="submit" className="btn btn-warning" value="Save Changes"/>
                                   <span> </span>
-                                  <input type="button" className="btn btn-dark" value="Cancel"/>
+                                  <input type="button" onClick={goBack} className="btn btn-dark" value="Cancel"/>
                               </div>
                           </div>
                       </form>

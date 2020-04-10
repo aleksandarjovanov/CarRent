@@ -1,12 +1,14 @@
 package finki.ukim.mk.carrent.service.impl;
 
+import finki.ukim.mk.carrent.model.Car;
 import finki.ukim.mk.carrent.model.Client;
 import finki.ukim.mk.carrent.model.Renter;
 import finki.ukim.mk.carrent.model.Sex;
 import finki.ukim.mk.carrent.model.exceptions.InvalidRenterException;
+import finki.ukim.mk.carrent.repository.repoInterfaces.CarRepository;
 import finki.ukim.mk.carrent.repository.repoInterfaces.RenterRepository;
+import finki.ukim.mk.carrent.service.CarService;
 import finki.ukim.mk.carrent.service.RenterService;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +17,11 @@ import java.util.List;
 public class RenterServiceImpl implements RenterService {
 
     private final RenterRepository renterRepository;
+    private final CarService carService;
 
-    public RenterServiceImpl(RenterRepository renterRepository) {
+    public RenterServiceImpl(RenterRepository renterRepository, CarService carService) {
         this.renterRepository = renterRepository;
+        this.carService = carService;
     }
 
     @Override
@@ -50,6 +54,8 @@ public class RenterServiceImpl implements RenterService {
 
     @Override
     public void deleteById(Long renterId) {
+        List<Car> cars = this.carService.getAllOwnedCarsById(renterId);
+        cars.forEach(car -> this.carService.deleteById(car.getId()));
         this.renterRepository.deleteById(renterId);
     }
 

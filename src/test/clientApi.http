@@ -38,7 +38,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/clients?firstName=e
+GET http://localhost:8080/clients?firstName=l
 
 > {%
 client.test("Request executed successfully", function() {
@@ -48,7 +48,7 @@ client.test("Request executed successfully", function() {
 
 ###
 POST http://localhost:8080/clients/follow
-clientId: 3
+clientId: 1
 renterId: 1
 
 > {%

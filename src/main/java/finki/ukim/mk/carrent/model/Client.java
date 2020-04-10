@@ -35,7 +35,6 @@ public class Client {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "followers")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Renter> following;
 
     public void follow(Renter renter) {
@@ -58,6 +57,13 @@ public class Client {
         this.crimeRecord = crimeRecord;
         this.imgUrl = imgUrl;
         this.following = new ArrayList<>();
+    }
+
+    @PreRemove
+    private void removeClientsFromRenters() {
+        for (Renter r : following) {
+            r.getFollowers().remove(this);
+        }
     }
 
 }

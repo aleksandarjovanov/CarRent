@@ -28,7 +28,6 @@ public class Renter {
     private String imgUrl;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Client> followers;
 
     public void createRenter(String embg, String firstName, String lastName, int age, Sex sex, String imgUrl, List<Client> followersList){
