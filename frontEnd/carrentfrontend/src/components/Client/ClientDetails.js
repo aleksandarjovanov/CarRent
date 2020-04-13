@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {useHistory} from "react-router-dom";
-import clientsService from "../API/axiosIngredientService"
-import './Style/ClientDetails.css'
+import clientsService from "../API/axiosIngredientService";
+import './Style/ClientDetails.css';
 
 const ClientDetails = (props) => {
 
@@ -9,9 +8,7 @@ const ClientDetails = (props) => {
         loadClient();
     },[]);
 
-    const [client, setClient] = useState([]);
-
-    const history = useHistory();
+    const [client, setClient] = useState({});
 
     const loadClient = () => {
         clientsService.fetchClient(props.match.params.id).then(response=>{

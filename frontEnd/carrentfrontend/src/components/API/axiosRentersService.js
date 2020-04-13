@@ -9,23 +9,23 @@ const rentersService = {
     fetchRenter: (id)=> {
         return axios.get("renters/" + id);
     },
-    deleteClient: (id)=> {
+    deleteRenter: (id)=> {
         return axios.delete("renters/" + id);
     },
-    addClient: (term) => {
+    addRenter: (term) => {
 
         const formParams = qs.stringify(term);
-        return axios.post("/clients",formParams, {
+        return axios.post("/renters",formParams, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             }
         });
     },
-    updateClient : (client) => {
+    updateRenter : (renter) => {
 
-        const clientId= client.id;
-        const formParams = qs.stringify(client);
-        return axios.patch("clients/"+clientId, formParams, {
+        const renterId= renter.id;
+        const formParams = qs.stringify(renter);
+        return axios.patch("renters/"+renterId, formParams, {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             }

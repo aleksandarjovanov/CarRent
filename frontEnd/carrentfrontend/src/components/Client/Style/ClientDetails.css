@@ -13,6 +13,7 @@
 }
 
 .button1 {
+    margin-top: 35px;
     border: none;
     outline: 0;
     display: inline-block;
@@ -44,6 +45,14 @@
     background: -o-linear-gradient(180deg, #36304a, #ab575b);
     background: -moz-linear-gradient(180deg, #36304a, #ab575b);
     background: linear-gradient(180deg, #36304a, #ab575b);
+}
+.forMargin{
+    margin: 10px;
+}
+.followersList {
+    padding: 4px;
+    background: #d9d7db;
+    display: inline;
 }
 
 

@@ -1,21 +1,22 @@
 import React from 'react';
 import {useHistory} from "react-router-dom";
-import SingleClient from "./SingleClient";
-import '../Client/Style/ListClients.css'
-import '../Client/Style/util.css'
+import '../Client/Style/ListClients.css';
+import '../Client/Style/util.css';
+import SingleRenter from "./SingleRenter";
+
 
 const ListRenters = (props) => {
 
     const history = useHistory();
 
     const handleAdd = () => {
-        history.push("/clients/add");
+        history.push("/renters/add");
     };
 
-    const singleClient = props.clients.map((client) => {
+    const singleRenter = props.renters.map((renter) => {
 
         return(
-            <SingleClient onDetails={props.onDetails} single={client} key={client.id} />
+            <SingleRenter onDetails={props.onDetails} single={renter} key={renter.id} />
         );
     });
 
@@ -32,24 +33,23 @@ const ListRenters = (props) => {
                         <table>
                             <thead>
                             <tr className="table100-head">
-                                <th className="column1">Client ID</th>
+                                <th className="column1">Renter ID</th>
                                 <th className="column2">First Name</th>
-                                <th className="column2">Last Name</th>
-                                <th className="column3">Gender</th>
-                                <th className="column4">Age</th>
-                                <th className="column5">Driving licence</th>
+                                <th className="column3">Last Name</th>
+                                <th className="column4">Gender</th>
+                                <th className="column5">Age</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {singleClient}
+                            {singleRenter}
                             </tbody>
                         </table>
                         <br/>
-                        <button className="btn btn-success" onClick={handleAdd}>Add Client</button>
+                        <button className="btn btn-success" onClick={handleAdd}>Add Renter</button>
                         <br/>
                         <br/>
                         <form  className="form-inline mt-2 mt-md-0">
-                            <input className="form-control mr-sm-2" onChange={handleSearch} name={"firstName"} type="text" placeholder="Search Clients" aria-label="Search"/>
+                            <input className="form-control mr-sm-2" onChange={handleSearch} name={"firstName"} type="text" placeholder="Search Renters" aria-label="Search"/>
                         </form>
                     </div>
                 </div>

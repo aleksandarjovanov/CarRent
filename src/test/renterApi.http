@@ -1,7 +1,7 @@
 POST http://localhost:8080/renters
 Content-Type: application/x-www-form-urlencoded
 
-embg=2522197424029&firstName=oLoL&lastName=OOOO&age=31&sex=male&imgUrl=someurl
+embg=2522197424029&firstName=Stojan&lastName=Anglov&age=31&sex=male&imgUrl=someurl
 
 > {%
 client.test("Request executed successfully", function() {
@@ -56,10 +56,10 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-PATCH http://localhost:8080/renters/2
+PATCH http://localhost:8080/renters/1
 Content-Type: application/x-www-form-urlencoded
 
-embg=2222222222222&firstName=JJ&lastName=lolll&age=22&sex=male&imgUrl=someurl
+embg=2222222222222&firstName=Ilija&lastName=Angelov&age=22&sex=male&imgUrl=https://cf.shopee.vn/file/4d35935d45b122f3e0851d9d912a825e
 
 > {%
 client.test("Request executed successfully", function() {
