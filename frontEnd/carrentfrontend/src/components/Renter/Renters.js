@@ -4,8 +4,6 @@ import rentersService from "../API/axiosRentersService";
 import ListRenters from "./ListRenters";
 import RenterDetails from "./RenterDetails";
 import EditRenter from "./EditRenter";
-import AddClient from "../Client/AddClient";
-import clientsService from "../API/axiosIngredientService";
 import AddRenter from "./AddRenter";
 
 const Renters = ({match}) => {
@@ -15,7 +13,7 @@ const Renters = ({match}) => {
     },[]);
 
     const [renters, setRenters] = useState([]);
-    const [renter, setRenter] = useState([]);
+    const [renter, setRenter] = useState({});
     const [followers, setFollowers] = useState([]);
 
     const history = useHistory();

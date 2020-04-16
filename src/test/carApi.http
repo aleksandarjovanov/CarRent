@@ -2,7 +2,7 @@ POST http://localhost:8080/cars
 Content-Type: application/x-www-form-urlencoded
 renterId: 1
 
-plate=AA112&mark=Motroorr&model=Focuse&color=blue&yearOfProduction=2017&cost=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
+plate=AA112&mark=Jeep&model=Compass&color=blue&yearOfProduction=2017&cost=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
 
 > {%
 client.test("Request executed successfully", function() {
@@ -39,7 +39,7 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-GET http://localhost:8080/cars?mark=F
+GET http://localhost:8080/cars?mark=J
 
 > {%
 client.test("Request executed successfully", function() {

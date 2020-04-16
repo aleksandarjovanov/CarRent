@@ -4,6 +4,8 @@ import Header from "../Header/Header";
 import Clients from "../Client/Clients";
 import './App.css';
 import Renters from "../Renter/Renters";
+import Cars from "../Car/Cars";
+import CarHistories from "../CarHistories/CarHistories";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
             <Switch>
               <Route path={"/clients"} component={Clients}/>
               <Route path={"/renters"} component={Renters}/>
+              <Route path={"/cars"} component={Cars}/>
+              <Route path={"/carHistories"} component={CarHistories}/>
             </Switch>
 
         </div>

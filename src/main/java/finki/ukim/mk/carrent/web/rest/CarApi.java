@@ -44,10 +44,10 @@ public class CarApi {
                       @RequestParam String model,
                       @RequestParam String color,
                       @RequestParam int yearOfProduction,
-                      @RequestParam int cost,
+                      @RequestParam int costPerDay,
                       @RequestParam String imgLink
                       ){
-        return this.carService.createCar(plate, mark, model, color, yearOfProduction, cost, imgLink, renterId);
+        return this.carService.createCar(plate, mark, model, color, yearOfProduction, costPerDay, imgLink, renterId);
     }
 
     @GetMapping
@@ -83,10 +83,10 @@ public class CarApi {
                        @RequestParam String model,
                        @RequestParam String color,
                        @RequestParam int yearOfProduction,
-                       @RequestParam int cost,
+                       @RequestParam int costPerDay,
                        @RequestParam String imgLink
     ){
-        return this.carService.editCar(carId, plate, mark, model, color, yearOfProduction, cost, imgLink, renterId);
+        return this.carService.editCar(carId, plate, mark, model, color, yearOfProduction, costPerDay, imgLink, renterId);
     }
 
     @PostMapping("/carHistories")
@@ -94,12 +94,12 @@ public class CarApi {
                                        @RequestParam("registrationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate registrationDate,
                                        @RequestParam String breaksStatus,
                                        @RequestParam String frontGlassStatus,
-                                       @RequestParam String wheelStatus,
+                                       @RequestParam String wheelsStatus,
                                        @RequestParam String engineStatus,
-                                       @RequestParam int kmPassed,
-                                       @RequestParam String description
-                                       ){
-        return this.carHistoryService.createCarHistory(registrationDate, breaksStatus, frontGlassStatus, wheelStatus, engineStatus, kmPassed, description, carId);
+                                       @RequestParam int kmDistancePassed,
+                                       @RequestParam String detailsDescription
+                                        ){
+        return this.carHistoryService.createCarHistory(registrationDate, breaksStatus, frontGlassStatus, wheelsStatus, engineStatus, kmDistancePassed, detailsDescription, carId);
     }
 
     @DeleteMapping("/carHistories/{historyId}")
@@ -118,12 +118,12 @@ public class CarApi {
                                      @RequestParam("registrationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate registrationDate,
                                      @RequestParam String breaksStatus,
                                      @RequestParam String frontGlassStatus,
-                                     @RequestParam String wheelStatus,
+                                     @RequestParam String wheelsStatus,
                                      @RequestParam String engineStatus,
-                                     @RequestParam int kmPassed,
-                                     @RequestParam String description
+                                     @RequestParam int kmDistancePassed,
+                                     @RequestParam String detailsDescription
                                      ){
-        return this.carHistoryService.editHistory(historyId, carId, registrationDate, breaksStatus, frontGlassStatus, wheelStatus, engineStatus, kmPassed, description);
+        return this.carHistoryService.editHistory(historyId, carId, registrationDate, breaksStatus, frontGlassStatus, wheelsStatus, engineStatus, kmDistancePassed, detailsDescription);
     }
 
 }
