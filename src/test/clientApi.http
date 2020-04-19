@@ -48,7 +48,7 @@ client.test("Request executed successfully", function() {
 
 ###
 POST http://localhost:8080/clients/follow
-clientId: 2
+clientId: 1
 renterId: 1
 
 > {%

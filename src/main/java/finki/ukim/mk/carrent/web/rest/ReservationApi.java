@@ -75,8 +75,8 @@ public class ReservationApi {
     }
 
     @GetMapping(params = "name")
-    public List<Reservation> getReservationsByClientName(@RequestParam String firstName){
-        return this.reservationService.getReservationsByClientName(firstName);
+    public List<Reservation> getReservationsByClientName(@RequestParam String name){
+        return this.reservationService.getReservationsByClientName(name);
     }
 
     @GetMapping("/active")

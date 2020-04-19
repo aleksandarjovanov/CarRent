@@ -3,9 +3,6 @@ import {Route, useHistory} from "react-router-dom"
 import carService from "../API/axiosCarService";
 import ListCars from "./ListCars";
 import CarDetails from "./CarDetails";
-import rentersService from "../API/axiosRentersService";
-import EditRenter from "../Renter/EditRenter";
-import AddRenter from "../Renter/AddRenter";
 import EditCar from "./EditCar";
 import AddCar from "./AddCar";
 

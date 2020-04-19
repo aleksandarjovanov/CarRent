@@ -6,6 +6,7 @@ import './App.css';
 import Renters from "../Renter/Renters";
 import Cars from "../Car/Cars";
 import CarHistories from "../CarHistories/CarHistories";
+import Reservations from "../Reservation/Reservations";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path={"/renters"} component={Renters}/>
               <Route path={"/cars"} component={Cars}/>
               <Route path={"/carHistories"} component={CarHistories}/>
+              <Route path={"/reservations"} component={Reservations}/>
             </Switch>
 
         </div>
