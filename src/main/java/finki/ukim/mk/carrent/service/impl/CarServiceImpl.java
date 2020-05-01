@@ -41,7 +41,7 @@ public class CarServiceImpl implements CarService {
     public Car createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, String imgLink, Long renterId) {
         Renter renter = this.renterRepository.findById(renterId).orElseThrow(InvalidRenterException::new);
         Car car = new Car();
-        car.createCar(plate, mark, model, color, yearOfProduction, cost, imgLink, 0.0, 0, renter);
+        car.createCar(plate, mark, model, color, yearOfProduction, cost, imgLink, 0.0, 0, 0, renter);
         this.carRepository.save(car);
         this.terminService.createTermin(LocalDate.now(), LocalDate.of(2022, Month.APRIL, 1), car.getId());
         return car;
@@ -80,7 +80,7 @@ public class CarServiceImpl implements CarService {
     public Car editCar(Long carId, String plate, String mark, String model, String color, int yearOfProduction, int cost, String imgLink, Long renterId) {
         Car car = findById(carId);
         Renter renter = this.renterRepository.findById(renterId).orElseThrow(InvalidRenterException::new);
-        car.createCar(plate, mark, model, color, yearOfProduction, cost, imgLink, car.getRating(), car.getNumberOfRatings(), renter);
+        car.createCar(plate, mark, model, color, yearOfProduction, cost, imgLink, car.getRating(), car.getNumberOfRatings(), car.getSumOfRatings(), renter);
         return this.carRepository.save(car);
     }
 

@@ -1,8 +1,8 @@
 POST http://localhost:8080/cars
 Content-Type: application/x-www-form-urlencoded
-renterId: 1
+renterId: 2
 
-plate=AA112&mark=Jeep&model=Compass&color=blue&yearOfProduction=2017&costPerDay=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
+plate=AA112&mark=Tesla&model=Roadster II&color=Red&yearOfProduction=2017&costPerDay=100&imgLink=https://www.extremetech.com/wp-content/uploads/2017/11/Roadster_Hero-tilt.jpg
 
 > {%
 client.test("Request executed successfully", function() {
@@ -81,11 +81,9 @@ client.test("Request executed successfully", function() {
 %}
 
 ###
-POST http://localhost:8080/cars/1
+PATCH http://localhost:8080/cars/rating/2
 Content-Type: application/x-www-form-urlencoded
 rating: 4
-
-plate=AA112&mark=Ford&model=Focuse&color=blue&yearOfProduction=2017&cost=100&imgLink=asdasdwqdasdqwdasdqwdasdqwdsadq
 
 > {%
 client.test("Request executed successfully", function() {

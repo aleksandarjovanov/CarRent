@@ -1,7 +1,7 @@
 POST http://localhost:8080/renters
 Content-Type: application/x-www-form-urlencoded
 
-embg=2522197424029&firstName=Stojan&lastName=Anglov&age=31&sex=male&imgUrl=someurl
+embg=2222197424029&firstName=Ilija&lastName=Anglov&age=21&sex=male&imgUrl=someurl
 
 > {%
 client.test("Request executed successfully", function() {

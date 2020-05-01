@@ -35,18 +35,20 @@ public class Car {
     private String imgLink;
     private int yearOfProduction;
     private int costPerDay;
-    private double rating = 0;
-    private int numberOfRatings = 0;
+    private double rating;
+    private int numberOfRatings;
+    private int sumOfRatings;  // needed for calculation
 
     @ManyToOne
     private Renter renter;
 
     public void calculateRating(int rating){
         this.numberOfRatings++;
-        this.rating = (this.rating + rating) / numberOfRatings;
+        this.sumOfRatings+= rating;
+        this.rating = (double)this.sumOfRatings / numberOfRatings;
     }
 
-    public void createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, String imgLink, double rating, int numberOfRatings, Renter renter){
+    public void createCar(String plate, String mark, String model, String color, int yearOfProduction, int cost, String imgLink, double rating, int numberOfRatings, int sumOfRatings, Renter renter){
         this.plate = plate;
         this.mark = mark;
         this.model = model;
@@ -57,6 +59,7 @@ public class Car {
         this.numberOfRatings = numberOfRatings;
         this.imgLink = imgLink;
         this.renter = renter;
+        this.sumOfRatings = sumOfRatings;
     }
 
 }

@@ -65,7 +65,7 @@ public class CarApi {
         return this.carService.searchCarsByMark(mark);
     }
 
-    @PostMapping("/{carId}")
+    @PatchMapping("/rating/{carId}")
     public void setRating(@PathVariable Long carId, @RequestHeader int rating){
         this.carService.setRating(carId, rating);
     }

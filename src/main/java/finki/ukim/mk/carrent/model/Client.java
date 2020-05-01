@@ -38,13 +38,17 @@ public class Client {
     private List<Renter> following;
 
     public void follow(Renter renter) {
-        this.following.add(renter);
-        renter.getFollowers().add(this);
+        if(!this.following.contains(renter)) {
+            this.following.add(renter);
+            renter.getFollowers().add(this);
+        }
     }
 
     public void unFollow(Renter renter) {
-        this.following.remove(renter);
-        renter.getFollowers().remove(this);
+        if(this.following.contains(renter)) {
+            this.following.remove(renter);
+            renter.getFollowers().remove(this);
+        }
     }
 
     public void createClient(String embg, String firstName, String lastName, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl){
