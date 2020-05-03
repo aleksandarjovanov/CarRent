@@ -1,6 +1,7 @@
 package finki.ukim.mk.carrent.service;
 
 import finki.ukim.mk.carrent.model.Client;
+import finki.ukim.mk.carrent.model.Renter;
 import finki.ukim.mk.carrent.model.Sex;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface ClientService {
     void deleteById(Long clientId);
 
     Client editClient(Long clientId, String embg, String firstName, String lastName, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl);
+
+    List<Renter> getFollowing(Long clientId);
 }

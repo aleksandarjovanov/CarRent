@@ -1,6 +1,7 @@
 package finki.ukim.mk.carrent.web.rest;
 
 import finki.ukim.mk.carrent.model.Client;
+import finki.ukim.mk.carrent.model.Renter;
 import finki.ukim.mk.carrent.model.Sex;
 import finki.ukim.mk.carrent.service.ClientService;
 import org.springframework.web.bind.annotation.*;
@@ -77,6 +78,11 @@ public class ClientApi {
                              @RequestParam(value = "imgUrl", required = false) String imgUrl
                              ){
         return this.clientService.editClient(clientId, embg, firstName, lastName, age, sex, driverLicenceNumber, crimeRecord, imgUrl);
+    }
+
+    @GetMapping("/following/{clientId}")
+    public List<Renter> getAllFollowing(@PathVariable Long clientId){
+        return this.clientService.getFollowing(clientId);
     }
 
 

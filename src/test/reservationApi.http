@@ -1,9 +1,9 @@
 POST http://localhost:8080/reservations
 Content-Type: application/x-www-form-urlencoded
-clientId: 1
-carId: 1
+clientId: 3
+carId: 8
 
-comment=wowow&from=2020-05-10&to=2020-05-14
+comment=wowow&from=2020-08-10&to=2020-08-14
 
 > {%
 client.test("Request executed successfully", function() {

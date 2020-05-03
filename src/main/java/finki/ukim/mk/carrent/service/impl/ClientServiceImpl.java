@@ -75,4 +75,10 @@ public class ClientServiceImpl implements ClientService {
         client.createClient(embg, firstName, lastName, age, sex, driverLicenceNumber, crimeRecord, imgUrl);
         return this.clientRepository.save(client);
     }
+
+    @Override
+    public List<Renter> getFollowing(Long clientId) {
+        Client client = this.clientRepository.findById(clientId).orElseThrow(InvalidClientException::new);
+        return client.getFollowing();
+    }
 }
