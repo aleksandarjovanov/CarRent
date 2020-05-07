@@ -95,7 +95,7 @@ client.test("Request executed successfully", function() {
 ###
 POST http://localhost:8080/cars/carHistories
 Content-Type: application/x-www-form-urlencoded
-carId: 1
+carId: 11
 
 registrationDate=2018-09-26&breaksStatus=good&frontGlassStatus=good&wheelsStatus=bad&engineStatus=fine&kmDistancePassed=220000&detailsDescription=LOrese Fokume dorum lo iso ena kazamanionime!
 

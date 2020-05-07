@@ -1,4 +1,5 @@
 POST http://localhost:8080/clients
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoZXJvIiwiaWF0IjoxNTg4ODExODM4LCJleHAiOjE1ODg4OTgyMzh9.bZ4E-VMs9P5UqYDMuqdhGcSKlrEdhvnAKtzqoxwzzoJvE8tRLo8Obw1NnCodKTGw84Dw5jn91eItdrLbLrPpVA
 Content-Type: application/x-www-form-urlencoded
 
 embg=2512997464018&firstName=Tole&lastName=Jovanov&age=22&sex=female&driverLicenceNumber=Aa323OS&crimeRecord=true&imgUrl=https://i.pinimg.com/originals/6f/a2/5f/6fa25f61d325b980f7b602136b18d0e7.png
@@ -12,6 +13,8 @@ client.test("Request executed successfully", function() {
 
 ###
 GET http://localhost:8080/clients/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoZXJvIiwiaWF0IjoxNTg4ODExODM4LCJleHAiOjE1ODg4OTgyMzh9.bZ4E-VMs9P5UqYDMuqdhGcSKlrEdhvnAKtzqoxwzzoJvE8tRLo8Obw1NnCodKTGw84Dw5jn91eItdrLbLrPpVA
+
 
 > {%
 client.test("Request executed successfully", function() {
@@ -21,6 +24,7 @@ client.test("Request executed successfully", function() {
 
 ###
 GET http://localhost:8080/clients
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoZXJvIiwiaWF0IjoxNTg4ODExODM4LCJleHAiOjE1ODg4OTgyMzh9.bZ4E-VMs9P5UqYDMuqdhGcSKlrEdhvnAKtzqoxwzzoJvE8tRLo8Obw1NnCodKTGw84Dw5jn91eItdrLbLrPpVA
 
 > {%
 client.test("Request executed successfully", function() {

@@ -4,12 +4,13 @@ import finki.ukim.mk.carrent.model.Client;
 import finki.ukim.mk.carrent.model.Renter;
 import finki.ukim.mk.carrent.model.Sex;
 import finki.ukim.mk.carrent.service.ClientService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping(value = "/clients")
 public class ClientApi {
 
@@ -20,11 +21,13 @@ public class ClientApi {
     }
 
     @GetMapping("/{clientId}")
+//    @PreAuthorize("hasRole('USER')")
     public Client getClient(@PathVariable Long clientId){
         return this.clientService.findById(clientId);
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('USER')")
     public Client addClient(@RequestParam("embg") String embg,
                             @RequestParam("firstName") String firstName,
                             @RequestParam("lastName") String lastName,
@@ -38,6 +41,7 @@ public class ClientApi {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('USER')")
     public List<Client> getAllClients(){
         return this.clientService.getAllClients();
     }
