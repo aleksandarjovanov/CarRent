@@ -4,6 +4,7 @@ import finki.ukim.mk.carrent.model.Client;
 import finki.ukim.mk.carrent.model.Renter;
 import finki.ukim.mk.carrent.model.Sex;
 import finki.ukim.mk.carrent.service.RenterService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -21,37 +22,42 @@ public class RenterApi {
     }
 
     @GetMapping("/{renterId}")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public Renter getRenter(@PathVariable Long renterId){
         return this.renterService.findById(renterId);
     }
 
-    @PostMapping
-    public Renter addRenter(@RequestParam String embg,
-                            @RequestParam String firstName,
-                            @RequestParam String lastName,
-                            @RequestParam int age,
-                            @RequestParam Sex sex,
-                            @RequestParam String imgUrl
-                            ){
-        return this.renterService.createRenter(embg, firstName, lastName, age, sex, imgUrl, new ArrayList<>());
-    }
+//    @PostMapping
+//    public Renter addRenter(@RequestParam String embg,
+//                            @RequestParam String firstName,
+//                            @RequestParam String lastName,
+//                            @RequestParam int age,
+//                            @RequestParam Sex sex,
+//                            @RequestParam String imgUrl
+//                            ){
+//        return this.renterService.createRenter(embg, firstName, lastName, age, sex, imgUrl, new ArrayList<>());
+//    }
 
     @GetMapping
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<Renter> getAllRenter(){
         return this.renterService.getAllRenters();
     }
 
     @DeleteMapping("/{renterId}")
+    @PreAuthorize("hasRole('RENTER') or hasRole('ADMIN')")
     public void deleteRenter(@PathVariable Long renterId){
         this.renterService.deleteById(renterId);
     }
 
     @GetMapping(params = "name")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<Renter> searchRenterByName(@RequestParam String name){
         return this.renterService.searchRenters(name);
     }
 
     @PatchMapping("/{renterId}")
+    @PreAuthorize("hasRole('RENTER')")
     public Renter editRenter(@PathVariable Long renterId,
                              @RequestParam(value = "embg", required = false) String embg,
                              @RequestParam(value = "firstName", required = false) String firstName,
@@ -63,6 +69,7 @@ public class RenterApi {
         return this.renterService.editRenter(renterId, embg, firstName, lastName, age, sex, imgUrl);
     }
     @GetMapping("/followers/{renterId}")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<Client> getAllFollowers(@PathVariable Long renterId){
         return this.renterService.getFollowers(renterId);
     }

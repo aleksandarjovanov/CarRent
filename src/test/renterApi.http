@@ -1,7 +1,8 @@
 POST http://localhost:8080/renters
 Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoZXJvIiwiaWF0IjoxNTg4OTc4MDExLCJleHAiOjE1ODkwNjQ0MTF9.BCMHsMSObjhuUD6g3zI3c3y6467N2Y3Cw6KxYj42xeetyOXNcj_ITgJACkqJ7CLoAIKAUrZP_An8jwWJwEOxyg
 
-embg=2222197424029&firstName=Ilija&lastName=Anglov&age=21&sex=male&imgUrl=https://i.pinimg.com/originals/6f/a2/5f/6fa25f61d325b980f7b602136b18d0e7.png
+embg=2222197424029&firstName=Stole&lastName=Anglov&age=21&sex=male&imgUrl=https://i.pinimg.com/originals/6f/a2/5f/6fa25f61d325b980f7b602136b18d0e7.png
 
 > {%
 client.test("Request executed successfully", function() {

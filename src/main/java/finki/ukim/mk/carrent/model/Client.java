@@ -18,7 +18,6 @@ import java.util.List;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String embg;
 
@@ -51,7 +50,8 @@ public class Client {
         }
     }
 
-    public void createClient(String embg, String firstName, String lastName, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl){
+    public void createClient(Long id, String embg, String firstName, String lastName, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl){
+        this.id = id;
         this.embg = embg;
         this.firstName = firstName;
         this.lastName = lastName;

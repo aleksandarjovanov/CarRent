@@ -15,7 +15,7 @@ public interface ClientService {
 
     Client findById(Long clientId);
 
-    Client createClient(String embg, String firstName, String lastName, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl);
+    Client createClient(Long id, String embg, String firstName, String lastName, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl);
 
     List<Client> getAllClients();
 

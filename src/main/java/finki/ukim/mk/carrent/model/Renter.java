@@ -14,7 +14,6 @@ import java.util.List;
 public class Renter {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String embg;
 
@@ -30,7 +29,8 @@ public class Renter {
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Client> followers;
 
-    public void createRenter(String embg, String firstName, String lastName, int age, Sex sex, String imgUrl, List<Client> followersList){
+    public void createRenter(Long id,String embg, String firstName, String lastName, int age, Sex sex, String imgUrl, List<Client> followersList){
+        this.id = id;
         this.embg = embg;
         this.firstName = firstName;
         this.lastName = lastName;

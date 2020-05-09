@@ -7,6 +7,7 @@ import finki.ukim.mk.carrent.service.CarHistoryService;
 import finki.ukim.mk.carrent.service.CarService;
 import finki.ukim.mk.carrent.service.TerminService;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -28,16 +29,19 @@ public class CarApi {
     }
 
     @GetMapping("/{carId}")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public Car getCar(@PathVariable Long carId){
         return this.carService.findById(carId);
     }
 
     @GetMapping("/{carId}/termines")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<Termin> getCarTermines(@PathVariable Long carId){
         return this.terminService.getTerminesByCarId(carId);
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('RENTER')")
     public Car addCar(@RequestHeader Long renterId,
                       @RequestParam String plate,
                       @RequestParam String mark,
@@ -51,31 +55,37 @@ public class CarApi {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<Car> getAllCars(){
         return this.carService.getAllCars();
     }
 
     @DeleteMapping("/{carId}")
+    @PreAuthorize("hasRole('RENTER')")
     public void deleteCar(@PathVariable Long carId){
         this.carService.deleteById(carId);
     }
 
     @GetMapping(params = "mark")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<Car> searchCarsByMark(@RequestParam String mark){
         return this.carService.searchCarsByMark(mark);
     }
 
     @PatchMapping("/rating/{carId}")
+    @PreAuthorize("hasRole('USER')")
     public void setRating(@PathVariable Long carId, @RequestHeader int rating){
         this.carService.setRating(carId, rating);
     }
 
     @GetMapping("/renter/{renterId}")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<Car> getCarsByOwner(@PathVariable Long renterId){
         return this.carService.getAllOwnedCarsById(renterId);
     }
 
     @PatchMapping("/{carId}")
+    @PreAuthorize("hasRole('RENTER')")
     public Car editCar(@PathVariable Long carId,
                        @RequestHeader Long renterId,
                        @RequestParam String plate,
@@ -90,6 +100,7 @@ public class CarApi {
     }
 
     @PostMapping("/carHistories")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public CarHistory createCarHistory(@RequestHeader Long carId,
                                        @RequestParam("registrationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate registrationDate,
                                        @RequestParam String breaksStatus,
@@ -103,16 +114,19 @@ public class CarApi {
     }
 
     @DeleteMapping("/carHistories/{historyId}")
+    @PreAuthorize("hasRole('RENTER')")
     public void deleteCarHistory(@PathVariable Long historyId){
         this.carHistoryService.deleteById(historyId);
     }
 
     @GetMapping("carHistories/{carId}")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<CarHistory> getHistoriesByCar(@PathVariable Long carId){
         return this.carHistoryService.searchByCarId(carId);
     }
 
     @PatchMapping("/carHistories/{historyId}")
+    @PreAuthorize("hasRole('RENTER')")
     public CarHistory editCarHistory(@PathVariable Long historyId,
                                      @RequestHeader Long carId,
                                      @RequestParam("registrationDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate registrationDate,

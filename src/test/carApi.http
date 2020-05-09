@@ -1,6 +1,7 @@
 POST http://localhost:8080/cars
 Content-Type: application/x-www-form-urlencoded
-renterId: 7
+renterId: 1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoZXJvIiwiaWF0IjoxNTg4OTAxMDY4LCJleHAiOjE1ODg5ODc0Njh9.xGsXPx_lK3XpSHENvyKKI3Vt_mXkcu8aKOHdFxk_6wL_WD-ROIrJa9-vaJDJcGDdotlODGhfAKhZpY2swC_CWw
 
 plate=AA112&mark=Tesla&model=Roadster II&color=Red&yearOfProduction=2017&costPerDay=100&imgLink=https://www.extremetech.com/wp-content/uploads/2017/11/Roadster_Hero-tilt.jpg
 

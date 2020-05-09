@@ -8,6 +8,7 @@ import finki.ukim.mk.carrent.model.exceptions.InvalidRenterException;
 import finki.ukim.mk.carrent.repository.jpa.JpaClientRepository;
 import finki.ukim.mk.carrent.repository.repoInterfaces.ClientRepository;
 import finki.ukim.mk.carrent.repository.repoInterfaces.RenterRepository;
+import finki.ukim.mk.carrent.repository.repoInterfaces.UserRepository;
 import finki.ukim.mk.carrent.service.ClientService;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +19,12 @@ public class ClientServiceImpl implements ClientService {
 
     private ClientRepository clientRepository;
     private RenterRepository renterRepository;
+    private UserRepository userRepository;
 
-    public ClientServiceImpl(ClientRepository clientRepository, RenterRepository renterRepository) {
+    public ClientServiceImpl(ClientRepository clientRepository, RenterRepository renterRepository, UserRepository userRepository) {
         this.clientRepository = clientRepository;
         this.renterRepository = renterRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -48,9 +51,9 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client createClient(String embg, String firstName, String lastName, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl) {
+    public Client createClient(Long id, String embg, String firstName, String lastName, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl) {
         Client client = new Client();
-        client.createClient(embg, firstName, lastName, age, sex, driverLicenceNumber, crimeRecord, imgUrl);
+        client.createClient(id, embg, firstName, lastName, age, sex, driverLicenceNumber, crimeRecord, imgUrl);
         return this.clientRepository.save(client);
     }
 
@@ -67,12 +70,13 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public void deleteById(Long clientId) {
         this.clientRepository.deleteById(clientId);
+        this.userRepository.deleteById(clientId);
     }
 
     @Override
     public Client editClient(Long clientId, String embg, String firstName, String lastName, int age, Sex sex, String driverLicenceNumber, boolean crimeRecord, String imgUrl) {
         Client client = findById(clientId);
-        client.createClient(embg, firstName, lastName, age, sex, driverLicenceNumber, crimeRecord, imgUrl);
+        client.createClient(clientId, embg, firstName, lastName, age, sex, driverLicenceNumber, crimeRecord, imgUrl);
         return this.clientRepository.save(client);
     }
 

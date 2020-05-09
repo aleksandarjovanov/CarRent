@@ -21,42 +21,44 @@ public class ClientApi {
     }
 
     @GetMapping("/{clientId}")
-//    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public Client getClient(@PathVariable Long clientId){
         return this.clientService.findById(clientId);
     }
 
-    @PostMapping
-    @PreAuthorize("hasRole('USER')")
-    public Client addClient(@RequestParam("embg") String embg,
-                            @RequestParam("firstName") String firstName,
-                            @RequestParam("lastName") String lastName,
-                            @RequestParam("age") int age,
-                            @RequestParam("sex") Sex sex,
-                            @RequestParam("driverLicenceNumber") String driverLicenceNumber,
-                            @RequestParam("crimeRecord") boolean crimeRecord,
-                            @RequestParam("imgUrl") String imgUrl
-                            ){
-        return this.clientService.createClient(embg, firstName, lastName, age, sex, driverLicenceNumber,crimeRecord, imgUrl);
-    }
+//    @PostMapping
+//    public Client addClient(@RequestParam("embg") String embg,
+//                            @RequestParam("firstName") String firstName,
+//                            @RequestParam("lastName") String lastName,
+//                            @RequestParam("age") int age,
+//                            @RequestParam("sex") Sex sex,
+//                            @RequestParam("driverLicenceNumber") String driverLicenceNumber,
+//                            @RequestParam("crimeRecord") boolean crimeRecord,
+//                            @RequestParam("imgUrl") String imgUrl
+//                            ){
+//        return this.clientService.createClient(embg, firstName, lastName, age, sex, driverLicenceNumber,crimeRecord, imgUrl);
+//    }
 
     @GetMapping
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<Client> getAllClients(){
         return this.clientService.getAllClients();
     }
 
     @DeleteMapping("/{clientId}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public void deleteClient(@PathVariable Long clientId){
         this.clientService.deleteById(clientId);
     }
 
     @GetMapping(params = "firstName")
+    @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<Client> searchClientsByName(@RequestParam String firstName){
         return this.clientService.searchClientsByName(firstName);
     }
 
     @PostMapping("/follow")
+    @PreAuthorize("hasRole('USER')")
     public void follow(@RequestHeader(value = "clientId", required = true) Long clientId,
                        @RequestHeader(value = "renterId", required = true) Long renterId
                        ){
@@ -64,6 +66,7 @@ public class ClientApi {
     }
 
     @PostMapping("/unFollow")
+    @PreAuthorize("hasRole('USER')")
     public void unFollow(@RequestHeader(value = "clientId", required = true) Long clientId,
                          @RequestHeader(value = "renterId", required = true) Long renterId
                          ){
@@ -71,6 +74,7 @@ public class ClientApi {
     }
 
     @PatchMapping("/{clientId}")
+    @PreAuthorize("hasRole('USER')")
     public Client editClient(@PathVariable Long clientId,
                              @RequestParam(value = "embg", required = false) String embg,
                              @RequestParam(value = "firstName", required = false) String firstName,
@@ -85,6 +89,7 @@ public class ClientApi {
     }
 
     @GetMapping("/following/{clientId}")
+    @PreAuthorize("hasRole('USER')")
     public List<Renter> getAllFollowing(@PathVariable Long clientId){
         return this.clientService.getFollowing(clientId);
     }

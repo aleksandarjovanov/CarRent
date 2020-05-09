@@ -11,17 +11,21 @@ import finki.ukim.mk.carrent.security.payload.request.SignupRequest;
 import finki.ukim.mk.carrent.security.payload.response.JwtResponse;
 import finki.ukim.mk.carrent.security.payload.response.MessageResponse;
 import finki.ukim.mk.carrent.security.services.UserDetailsImpl;
+import finki.ukim.mk.carrent.service.ClientService;
+import finki.ukim.mk.carrent.service.RenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -32,6 +36,13 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+
+    @Autowired
+    ClientService clientService;
+
+    @Autowired
+    RenterService renterService;
+
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -50,9 +61,15 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
-
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        Authentication authentication = null;
+        try {
+            authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+        }catch (Exception e){
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Bad credentials, please try again!"));
+        }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
