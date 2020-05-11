@@ -1,9 +1,11 @@
 package finki.ukim.mk.carrent.web.rest;
 
 import finki.ukim.mk.carrent.model.Reservation;
+import finki.ukim.mk.carrent.model.Termin;
 import finki.ukim.mk.carrent.service.CarService;
 import finki.ukim.mk.carrent.service.ClientService;
 import finki.ukim.mk.carrent.service.ReservationService;
+import finki.ukim.mk.carrent.service.TerminService;
 import net.bytebuddy.asm.Advice;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,11 +24,13 @@ public class ReservationApi {
     private final ClientService clientService;
     private final CarService carService;
     private final ReservationService reservationService;
+    private final TerminService terminService;
 
-    public ReservationApi(ClientService clientService, CarService carService, ReservationService reservationService) {
+    public ReservationApi(ClientService clientService, CarService carService, ReservationService reservationService, TerminService terminService) {
         this.clientService = clientService;
         this.carService = carService;
         this.reservationService = reservationService;
+        this.terminService = terminService;
     }
 
     @GetMapping("/{reservationId}")
@@ -48,7 +52,18 @@ public class ReservationApi {
             response.sendRedirect("/reservations/error");   // not sure
         }
         else{
-            this.reservationService.createReservation(clientId, carId, comment, from, to);
+            boolean isCorect = false;
+            List<Termin> freeTermines = this.terminService.getTerminesByCarId(carId);
+            for (Termin t: freeTermines) {
+                if(from.compareTo(t.getAvailableFrom()) >= 0 && to.compareTo(t.getAvailableTo()) <= 0){
+                    isCorect = true;
+                    break;
+                }
+            }
+            if(isCorect){
+                this.reservationService.createReservation(clientId, carId, comment, from, to);
+            }
+            else response.sendRedirect("/reservations/error");   // not sure
         }
     }
 
@@ -91,7 +106,7 @@ public class ReservationApi {
     @GetMapping("/active")
     @PreAuthorize("hasRole('USER') or hasRole('RENTER') or hasRole('ADMIN')")
     public List<Reservation> getActiveReservations(){
-        return this.reservationService.getActiveReservations(LocalDate.of(2020, 4, 1));
+        return this.reservationService.getActiveReservations(LocalDate.now());
     }
 
 }

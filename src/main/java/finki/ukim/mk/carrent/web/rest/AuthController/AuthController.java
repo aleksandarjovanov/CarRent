@@ -8,6 +8,7 @@ import finki.ukim.mk.carrent.repository.repoInterfaces.UserRepository;
 import finki.ukim.mk.carrent.security.jwt.JwtUtils;
 import finki.ukim.mk.carrent.security.payload.request.LoginRequest;
 import finki.ukim.mk.carrent.security.payload.request.SignupRequest;
+import finki.ukim.mk.carrent.security.payload.request.SignupRequestRenter;
 import finki.ukim.mk.carrent.security.payload.response.JwtResponse;
 import finki.ukim.mk.carrent.security.payload.response.MessageResponse;
 import finki.ukim.mk.carrent.security.services.UserDetailsImpl;
@@ -86,7 +87,7 @@ public class AuthController {
                 roles));
     }
 
-    @PostMapping("/signup")
+    @PostMapping("/signupClient")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
@@ -137,6 +138,67 @@ public class AuthController {
 
         user.setRoles(roles);
         userRepository.save(user);
+        User tmpUser = userRepository.findByUsername(user.getUsername()).orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + signUpRequest.getUsername()));
+        clientService.createClient(tmpUser.getId(),signUpRequest.getEmbg(), signUpRequest.getFirstName(), signUpRequest.getLastName(), signUpRequest.getAge(),
+                signUpRequest.getSex(), signUpRequest.getDriverLicenceNumber(), signUpRequest.isCrimeRecord(), signUpRequest.getImgUrl());
+
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+    @PostMapping("/signupRenter")
+    public ResponseEntity<?> registerUserRenter(@Valid @RequestBody SignupRequestRenter signUpRequest) {
+        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Username is already taken!"));
+        }
+
+        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+        }
+
+        // Create new user's account
+        User user = new User(signUpRequest.getUsername(),
+                signUpRequest.getEmail(),
+                encoder.encode(signUpRequest.getPassword()));
+
+        Set<String> strRoles = signUpRequest.getRole();
+        Set<Role> roles = new HashSet<>();
+
+        if (strRoles == null) {
+            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            roles.add(userRole);
+        } else {
+            strRoles.forEach(role -> {
+                switch (role) {
+                    case "admin":
+                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(adminRole);
+
+                        break;
+                    case "renter":
+                        Role modRole = roleRepository.findByName(ERole.ROLE_RENTER)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(modRole);
+
+                        break;
+                    default:
+                        Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+                        roles.add(userRole);
+                }
+            });
+        }
+
+        user.setRoles(roles);
+        userRepository.save(user);
+        User tmpUser = userRepository.findByUsername(user.getUsername()).orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + signUpRequest.getUsername()));
+        renterService.createRenter(tmpUser.getId(),signUpRequest.getEmbg(), signUpRequest.getFirstName(), signUpRequest.getLastName(), signUpRequest.getAge(),
+                signUpRequest.getSex(), signUpRequest.getImgUrl(), new ArrayList<>());
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }

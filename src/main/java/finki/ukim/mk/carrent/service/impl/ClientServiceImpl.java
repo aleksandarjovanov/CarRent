@@ -2,6 +2,7 @@ package finki.ukim.mk.carrent.service.impl;
 
 import finki.ukim.mk.carrent.model.Client;
 import finki.ukim.mk.carrent.model.Renter;
+import finki.ukim.mk.carrent.model.Reservation;
 import finki.ukim.mk.carrent.model.Sex;
 import finki.ukim.mk.carrent.model.exceptions.InvalidClientException;
 import finki.ukim.mk.carrent.model.exceptions.InvalidRenterException;
@@ -10,6 +11,7 @@ import finki.ukim.mk.carrent.repository.repoInterfaces.ClientRepository;
 import finki.ukim.mk.carrent.repository.repoInterfaces.RenterRepository;
 import finki.ukim.mk.carrent.repository.repoInterfaces.UserRepository;
 import finki.ukim.mk.carrent.service.ClientService;
+import finki.ukim.mk.carrent.service.ReservationService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +22,13 @@ public class ClientServiceImpl implements ClientService {
     private ClientRepository clientRepository;
     private RenterRepository renterRepository;
     private UserRepository userRepository;
+    private ReservationService reservationService;
 
-    public ClientServiceImpl(ClientRepository clientRepository, RenterRepository renterRepository, UserRepository userRepository) {
+    public ClientServiceImpl(ClientRepository clientRepository, RenterRepository renterRepository, UserRepository userRepository, ReservationService reservationService) {
         this.clientRepository = clientRepository;
         this.renterRepository = renterRepository;
         this.userRepository = userRepository;
+        this.reservationService = reservationService;
     }
 
     @Override
@@ -69,6 +73,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void deleteById(Long clientId) {
+        List<Reservation> reservations = this.reservationService.getReservationsByClientId(clientId);
+        this.reservationService.deleteAll(reservations);
         this.clientRepository.deleteById(clientId);
         this.userRepository.deleteById(clientId);
     }

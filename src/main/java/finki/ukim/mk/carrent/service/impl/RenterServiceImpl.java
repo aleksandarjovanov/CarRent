@@ -7,6 +7,7 @@ import finki.ukim.mk.carrent.model.Sex;
 import finki.ukim.mk.carrent.model.exceptions.InvalidRenterException;
 import finki.ukim.mk.carrent.repository.repoInterfaces.CarRepository;
 import finki.ukim.mk.carrent.repository.repoInterfaces.RenterRepository;
+import finki.ukim.mk.carrent.repository.repoInterfaces.UserRepository;
 import finki.ukim.mk.carrent.service.CarService;
 import finki.ukim.mk.carrent.service.RenterService;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,12 @@ public class RenterServiceImpl implements RenterService {
 
     private final RenterRepository renterRepository;
     private final CarService carService;
+    private UserRepository userRepository;
 
-    public RenterServiceImpl(RenterRepository renterRepository, CarService carService) {
+    public RenterServiceImpl(RenterRepository renterRepository, CarService carService, UserRepository userRepository) {
         this.renterRepository = renterRepository;
         this.carService = carService;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -57,6 +60,7 @@ public class RenterServiceImpl implements RenterService {
         List<Car> cars = this.carService.getAllOwnedCarsById(renterId);
         cars.forEach(car -> this.carService.deleteById(car.getId()));
         this.renterRepository.deleteById(renterId);
+        this.userRepository.deleteById(renterId);
     }
 
     @Override
