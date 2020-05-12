@@ -1,0 +1,23 @@
+#profil-container {
+  max-width: 1000px;
+}
+
+.col.profil-col {
+  padding: 30px;
+}
+
+#profil-img {
+  width: 100%;
+}
+
+#profil-btns {
+  text-align: center;
+}
+
+.btn-make-profile {
+  width: 200px;
+}
+
+.fb{
+  font-size: 18px;
+}

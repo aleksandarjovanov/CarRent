@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-family: Arial, Helevetica, sans-serif;
+}
+
+.App {
+  max-width: 100%;
+}
+
+#promo {
+  text-align: center;
+  background: url(../img/bmw1.jpg) no-repeat;
+  background-size: cover;
+  padding: 120px;
+  margin: 4px;
+}
+
+#promo .jumbotron {
+  border-radius: 20px;
+  padding: 40px;
+  background-color: rgba(255,255,255,0.65);
+  margin: 0 auto;
+}
+
+.main-container {
+  text-align: center;
+  width: 1430px;
+  margin: 0 auto;
+}
+
+.home-container {
+  text-align: center;
+  padding: 30px;
+  width: 1200px;
+  font-size: 18px;
+  margin: 0 auto;
+}
+
+#create-account {
+  margin-bottom: 50px;
+}
+
+.fa.fa-user {
+  font-size: 40px;
+}
+
+.fa.fa-key {
+  font-size: 40px;
+}
+
+.btn.btn-primary {
+  margin-left: 15px;
+}
+
+.nav-item {
+  margin-left: 10px;
+}

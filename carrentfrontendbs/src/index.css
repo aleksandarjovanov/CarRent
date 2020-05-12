@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url(./fonts/fontawesome-webfont.woff) format('woff');
+}
+

@@ -1,0 +1,8 @@
+#markMe {
+    color: #000000;
+    background-color: #fff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
