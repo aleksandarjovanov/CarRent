@@ -16,12 +16,15 @@ import javax.persistence.Id;
 public class Admin {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String imgUrl;
 
-    public void createAdmin(String name){
-        this.name = name;
+    public void createAdmin(Long id, String firstName, String lastName, String imgUrl) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.imgUrl = imgUrl;
     }
 }
