@@ -24,6 +24,8 @@ Spring project for renting cars
 *username: admin*\
 *password: admin*
 
+![Screenshot](ER_Diagram.jpg)
+
 ## Стартување на проектот
 
 Клонирајте го проектот од git, во него се наогаат и двете апликации односно и Frontend и Backend.
