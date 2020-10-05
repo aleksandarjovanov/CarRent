@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Data
 public class Termin {
-
+/* // */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -12,6 +12,19 @@ client.test("Request executed successfully", function() {
 
 
 ###
+POST http://localhost:8080/api/auth/signupAdmin
+Access-Control-Allow-Origin: '*'
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&email=admin@gmail.com&role=["admin"]&password=admin&firstName=admin&lastName=admin&imgUrl=https://i.pinimg.com/originals/6f/a2/5f/6fa25f61d325b980f7b602136b18d0e7.png
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 201, "Response status is not 201");
+});
+%}
+
+###
 GET http://localhost:8080/clients/1
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoZXJvIiwiaWF0IjoxNTg4ODExODM4LCJleHAiOjE1ODg4OTgyMzh9.bZ4E-VMs9P5UqYDMuqdhGcSKlrEdhvnAKtzqoxwzzoJvE8tRLo8Obw1NnCodKTGw84Dw5jn91eItdrLbLrPpVA
 
